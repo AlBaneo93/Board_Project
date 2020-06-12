@@ -1,17 +1,23 @@
 <template>
 	<v-app>
-		<Board />
+		<Header />
+		<Body />
+		<Footer />
 	</v-app>
 </template>
 
 <script>
-import Board from './components/Board';
+import Header from './views/Header';
+import Footer from './views/Footer';
+import Body from './views/Body';
 
 export default {
 	name: 'App',
 
 	components: {
-		Board,
+		Header,
+		Footer,
+		Body,
 	},
 };
 </script>

@@ -1,4 +1,4 @@
-import Vue from 'vuex';
+import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persistedstate';
 
