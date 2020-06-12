@@ -26,4 +26,9 @@ public class BoardDTO {
 
   @Column(length = 5000)
   private String content;
+
+  @Column private long writerid;
+
+  @Column(length = 30)
+  private String writer;
 }

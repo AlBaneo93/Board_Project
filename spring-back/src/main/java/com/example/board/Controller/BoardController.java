@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class BoardController {
   @Autowired private IBoardService service;
 
-  @PostMapping("/api/board")
+  @PostMapping("/board")
   public ResponseEntity<Map<String, Object>> addBoard(@RequestBody BoardDTO boardDTO) {
     Map<String, Object> map = new HashMap<String, Object>();
     try {
@@ -32,7 +34,7 @@ public class BoardController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @PutMapping("/api/board")
+  @PutMapping("/board")
   public ResponseEntity<Map<String, Object>> updateBoard(@RequestBody BoardDTO boardDTO) {
     Map<String, Object> map = new HashMap<String, Object>();
     try {
@@ -45,7 +47,7 @@ public class BoardController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @DeleteMapping("/api/board")
+  @DeleteMapping("/board")
   public ResponseEntity<Map<String, Object>> deleteBoard(@RequestBody BoardDTO boardDTO) {
     Map<String, Object> map = new HashMap<String, Object>();
     try {
@@ -58,7 +60,7 @@ public class BoardController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/board/{id}")
+  @GetMapping("/board/{id}")
   public ResponseEntity<Map<String, Object>> getBoard(@PathVariable("id") long id) {
     Map<String, Object> map = new HashMap<String, Object>();
     try {
@@ -71,7 +73,7 @@ public class BoardController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/board")
+  @GetMapping("/board")
   public ResponseEntity<Map<String, Object>> getBoardList() {
     Map<String, Object> map = new HashMap<String, Object>();
     try {

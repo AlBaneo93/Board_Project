@@ -26,4 +26,7 @@ public class CommentDTO {
   private long boardid;
 
   private int level;
+
+//  상위 레벨의 comment id
+  private long appendto;
 }

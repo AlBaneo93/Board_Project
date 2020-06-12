@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class CommentController {
   @Autowired private ICommentService service;
 
-  @PostMapping("/api/comment")
+  @PostMapping("/comment")
   public ResponseEntity<Map<String, Object>> addComment(@RequestBody CommentDTO commentDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -34,7 +35,7 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @PutMapping("/api/comment")
+  @PutMapping("/comment")
   public ResponseEntity<Map<String, Object>> updateComment(@RequestBody CommentDTO commentDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -47,7 +48,7 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @DeleteMapping("/api/comment")
+  @DeleteMapping("/comment")
   public ResponseEntity<Map<String, Object>> deleteComment(@RequestBody CommentDTO commentDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -60,7 +61,7 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/comment/{id}")
+  @GetMapping("/comment/{id}")
   public ResponseEntity<Map<String, Object>> getComment(@PathVariable("id") long id) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -73,7 +74,7 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/comment")
+  @GetMapping("/comment")
   public ResponseEntity<Map<String, Object>> getComment(@RequestBody BoardDTO boardDTO) {
     Map<String, Object> map = new HashMap<>();
     try {

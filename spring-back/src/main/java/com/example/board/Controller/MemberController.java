@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class MemberController {
   @Autowired private IMemberService service;
   @Autowired private Hashing hashing;
 
-  @PostMapping("/api/signup")
+  @PostMapping("/signup")
   public ResponseEntity<Map<String, Object>> addMember(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -35,7 +37,7 @@ public class MemberController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @PostMapping("/api/signin")
+  @PostMapping("/signin")
   public ResponseEntity<Map<String, Object>> signIn(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -48,7 +50,7 @@ public class MemberController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @PutMapping("/api/member")
+  @PutMapping("/member")
   public ResponseEntity<Map<String, Object>> updateMember(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -61,7 +63,7 @@ public class MemberController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @DeleteMapping("/api/member")
+  @DeleteMapping("/member")
   public ResponseEntity<Map<String, Object>> deleteMember(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -74,7 +76,7 @@ public class MemberController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/member/{id}")
+  @GetMapping("/member/{id}")
   public ResponseEntity<Map<String, Object>> getMember(@PathVariable("id") long id) {
     Map<String, Object> map = new HashMap<>();
     try {
@@ -87,7 +89,7 @@ public class MemberController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-  @GetMapping("/api/member")
+  @GetMapping("/member")
   public ResponseEntity<Map<String, Object>> getAllMember(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {

@@ -12,13 +12,13 @@ public class CommentServiceImpl implements ICommentService {
   @Autowired private CommentRepository repository;
 
   @Override
-  public int addComment(CommentDTO commentDTO) {
-    return repository.save(commentDTO) != null ? 1 : 0;
+  public CommentDTO addComment(CommentDTO commentDTO) {
+    return repository.save(commentDTO);
   }
 
   @Override
-  public int updateComment(CommentDTO commentDTO) {
-    return repository.save(repository.getOne(commentDTO.getId())) != null ? 1 : 0;
+  public CommentDTO updateComment(CommentDTO commentDTO) {
+    return repository.save(repository.getOne(commentDTO.getId()));
   }
 
   @Override
@@ -33,7 +33,6 @@ public class CommentServiceImpl implements ICommentService {
 
   @Override
   public List<CommentDTO> getAllComment(BoardDTO boardDTO) {
-//    return repository.findAllByBoardid(boardDTO.getId());
-    return null;
+    return repository.findAllByBoardid(boardDTO.getId());
   }
 }

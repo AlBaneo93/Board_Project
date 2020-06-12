@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ICommentService {
 
-  int addComment(CommentDTO commentDTO);
+  CommentDTO addComment(CommentDTO commentDTO);
 
-  int updateComment(CommentDTO commentDTO);
+  CommentDTO updateComment(CommentDTO commentDTO);
 
   void deleteComment(CommentDTO commentDTO);
 
