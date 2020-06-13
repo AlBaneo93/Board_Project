@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import http from '../axios/http-commons';
+import http from '@/axios/http-commons';
 export default {
 	data() {
 		return {

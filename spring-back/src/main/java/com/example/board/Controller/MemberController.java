@@ -42,7 +42,8 @@ public class MemberController {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("msg", true);
-      map.put("result", service.getMember(memberDTO));
+      memberDTO.setPassword(hashing.getHahsResult(memberDTO.getPassword()));
+      map.put("result", service.signIn(memberDTO));
     } catch (Exception e) {
       e.printStackTrace();
       map.put("msg", false);

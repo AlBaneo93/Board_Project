@@ -11,8 +11,8 @@ public class MemberServiceImpl implements IMemberService {
   @Autowired private MemberRepository repository;
 
   @Override
-  public int addMember(MemberDTO memberDTO) {
-    return repository.save(memberDTO) != null ? 1 : 0;
+  public MemberDTO addMember(MemberDTO memberDTO) {
+    return repository.save(memberDTO);
   }
 
   @Override
@@ -24,6 +24,11 @@ public class MemberServiceImpl implements IMemberService {
   @Override
   public void deleteMember(MemberDTO memberDTO) {
     repository.delete(memberDTO);
+  }
+
+  @Override
+  public MemberDTO signIn(MemberDTO memberDTO) {
+    return repository.findByEmailAndPassword(memberDTO.getEmail(), memberDTO.getPassword()).get();
   }
 
   @Override

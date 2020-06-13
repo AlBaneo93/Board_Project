@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class BoardDTO {
 
   @Id
+//  자동으로 auto increment적용
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
@@ -31,4 +32,6 @@ public class BoardDTO {
 
   @Column(length = 30)
   private String writer;
+
+  private long createdat;
 }

@@ -19,6 +19,7 @@
 					:counter="20"
 					required
 					label="e-mail"
+					autofocus
 				></v-text-field>
 				<v-text-field
 					v-model="user.password"
@@ -26,7 +27,6 @@
 					required
 					label="password"
 				></v-text-field>
-				<v-checkbox color="success" label="do you agree" required></v-checkbox>
 
 				<v-card-actions>
 					<v-btn outlined warn @click="$emit('closesignin')">go back</v-btn>
@@ -46,17 +46,25 @@ export default {
 	},
 	data() {
 		return {
-			user: {},
+			user: {
+				id: 0,
+			},
 		};
 	},
 	methods: {
 		...mapActions(['userLogin']),
 		signin() {
 			http
-				.post('/member', this.user)
+				.post('/signin', this.user)
 				.then(result => {
-					console.log(result);
-					this.userLogin(result.data.result);
+					this.user = {};
+					if (result.data.msg) {
+						this.userLogin(result.data.result);
+						alert('로그인 성공!');
+						this.$emit('closesignin');
+						return;
+					}
+					alert('로그인 실패\n아이디와 패스워드를 다시한번 확인해주세요');
 				})
 				.catch(err => {
 					console.log(err);

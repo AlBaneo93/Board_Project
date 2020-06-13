@@ -1,16 +1,28 @@
 <template>
 	<v-system-bar fluid height="50%">
-		<router-link to="/">HOME</router-link>
-		<v-spacer></v-spacer>
-		<router-link to="/board">Board</router-link>
-
-		<v-btn @click="open(1)">
-			SignIn
-		</v-btn>
-		<v-btn @click="open(2)">
-			SignUp
-		</v-btn>
-
+		<v-row>
+			<v-col>
+				<router-link to="/">HOME</router-link>
+			</v-col>
+			<v-spacer></v-spacer>
+			<v-col :cols="1">
+				<router-link to="/board">Board</router-link>
+			</v-col>
+			<!-- TODO : slot으로 바꿀 수 있다 -->
+			<template v-if="user.islogin">
+				<v-col :cols="1">
+					<router-link to="/profile">{{ user.name }}</router-link>
+				</v-col>
+			</template>
+			<template v-else>
+				<v-btn @click="open(1)">
+					SignIn
+				</v-btn>
+				<v-btn @click="open(2)">
+					SignUp
+				</v-btn>
+			</template>
+		</v-row>
 		<SignIn :setDialog="setSignIn" @closesignin="close(1)" />
 		<SignUp :setDialog="setSignUp" @closesignup="close(2)" />
 	</v-system-bar>
@@ -19,6 +31,8 @@
 <script>
 import SignIn from '@/components/SignIn';
 import SignUp from '@/components/SignUp';
+
+import { mapGetters } from 'vuex';
 
 export default {
 	components: {
@@ -44,6 +58,9 @@ export default {
 				overlay_opacity: '90%',
 			},
 		};
+	},
+	computed: {
+		...mapGetters(['user']),
 	},
 	methods: {
 		close(val) {

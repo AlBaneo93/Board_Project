@@ -17,6 +17,7 @@
 					label="email"
 					required
 					v-model="user.email"
+					autofocus
 				></v-text-field>
 				<v-text-field
 					label="password"
@@ -30,6 +31,12 @@
 				></v-text-field>
 				<v-text-field label="name" required v-model="user.name"></v-text-field>
 				<v-file-input label="img" required v-model="user.img"></v-file-input>
+				<v-checkbox
+					v-model="agree"
+					color="success"
+					label="do you agree"
+					required
+				></v-checkbox>
 				<v-card-actions>
 					<v-btn outlined @click="$emit('closesignup')">go back</v-btn>
 					<v-btn outlined @click="signup">sign up</v-btn>
@@ -40,7 +47,7 @@
 </template>
 
 <script>
-import http from '../axios/http-commons';
+import http from '@/axios/http-commons';
 
 export default {
 	props: {
@@ -49,15 +56,19 @@ export default {
 	data() {
 		return {
 			user: {},
+			agree: false,
 		};
 	},
 	methods: {
 		signup() {
 			http
-				.post('/member', this.user)
+				.post('/signup', this.user)
 				.then(result => {
 					if (result.data.msg) {
 						alert('회원가입이 성공적으로 완료되었습니다');
+						this.user = {};
+						this.agree = false;
+						this.$emit('closesignup');
 					}
 				})
 				.catch(() => {
