@@ -1,5 +1,8 @@
 package com.example.board.Service;
 
-public class JwtServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtServiceImpl implements IJwtService {
 
 }

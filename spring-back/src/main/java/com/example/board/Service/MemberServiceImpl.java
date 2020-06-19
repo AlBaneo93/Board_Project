@@ -3,12 +3,15 @@ package com.example.board.Service;
 import com.example.board.DTO.MemberDTO;
 import com.example.board.Repository.MemberRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MemberServiceImpl implements IMemberService {
-  @Autowired private MemberRepository repository;
+  private MemberRepository repository;
+
+  public MemberServiceImpl(MemberRepository repository) {
+    this.repository = repository;
+  }
 
   @Override
   public MemberDTO addMember(MemberDTO memberDTO) {

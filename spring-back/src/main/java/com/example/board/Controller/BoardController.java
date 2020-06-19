@@ -4,7 +4,7 @@ import com.example.board.DTO.BoardDTO;
 import com.example.board.Service.IBoardService;
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class BoardController {
-  @Autowired private IBoardService service;
+  private IBoardService service;
+
+  public BoardController(IBoardService service) {
+    this.service = service;
+  }
 
   @PostMapping("/board")
   public ResponseEntity<Map<String, Object>> addBoard(@RequestBody BoardDTO boardDTO) {
@@ -74,6 +78,7 @@ public class BoardController {
   }
 
   @GetMapping("/board")
+  @Cacheable
   public ResponseEntity<Map<String, Object>> getBoardList() {
     Map<String, Object> map = new HashMap<String, Object>();
     try {

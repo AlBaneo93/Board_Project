@@ -4,12 +4,15 @@ import com.example.board.DTO.BoardDTO;
 import com.example.board.DTO.CommentDTO;
 import com.example.board.Repository.CommentRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommentServiceImpl implements ICommentService {
-  @Autowired private CommentRepository repository;
+  private CommentRepository repository;
+
+  public CommentServiceImpl(CommentRepository repository) {
+    this.repository = repository;
+  }
 
   @Override
   public CommentDTO addComment(CommentDTO commentDTO) {
@@ -33,6 +36,6 @@ public class CommentServiceImpl implements ICommentService {
 
   @Override
   public List<CommentDTO> getAllComment(BoardDTO boardDTO) {
-    return repository.findAllByBoardid(boardDTO.getId());
+    return repository.findAllByBoardidOrderByCreatedatDescLevelDesc(boardDTO.getId());
   }
 }

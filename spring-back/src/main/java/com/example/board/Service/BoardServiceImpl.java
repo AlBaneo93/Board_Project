@@ -3,13 +3,17 @@ package com.example.board.Service;
 import com.example.board.DTO.BoardDTO;
 import com.example.board.Repository.BoardRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BoardServiceImpl implements IBoardService {
 
-  @Autowired private BoardRepository repository;
+  private BoardRepository repository;
+
+  // 생성자를 이용한 의존성 주입
+  public BoardServiceImpl(BoardRepository repository) {
+    this.repository = repository;
+  }
 
   @Override
   public int addBoard(BoardDTO boardDTO) {

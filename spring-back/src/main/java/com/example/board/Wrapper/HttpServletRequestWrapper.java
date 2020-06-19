@@ -1,4 +1,4 @@
-package com.example.board.WrapperTest;
+package com.example.board.Wrapper;
 
 import java.io.IOException;
 import javax.servlet.ServletInputStream;

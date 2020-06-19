@@ -5,7 +5,7 @@ import com.example.board.Service.IMemberService;
 import com.example.board.Util.Hashing;
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class MemberController {
-  @Autowired private IMemberService service;
-  @Autowired private Hashing hashing;
+  private final IMemberService service;
+  private final Hashing hashing;
+
+  public MemberController(IMemberService service, Hashing hashing) {
+    this.service = service;
+    this.hashing = hashing;
+  }
 
   @PostMapping("/signup")
   public ResponseEntity<Map<String, Object>> addMember(@RequestBody MemberDTO memberDTO) {
@@ -91,6 +96,7 @@ public class MemberController {
   }
 
   @GetMapping("/member")
+  @Cacheable
   public ResponseEntity<Map<String, Object>> getAllMember(@RequestBody MemberDTO memberDTO) {
     Map<String, Object> map = new HashMap<>();
     try {

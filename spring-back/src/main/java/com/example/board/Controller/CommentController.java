@@ -3,9 +3,12 @@ package com.example.board.Controller;
 import com.example.board.DTO.BoardDTO;
 import com.example.board.DTO.CommentDTO;
 import com.example.board.Service.ICommentService;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class CommentController {
-  @Autowired private ICommentService service;
+   private ICommentService service;
+
+  public CommentController(ICommentService service) {
+    this.service = service;
+  }
 
   @PostMapping("/comment")
   public ResponseEntity<Map<String, Object>> addComment(@RequestBody CommentDTO commentDTO) {
@@ -75,11 +82,14 @@ public class CommentController {
   }
 
   @GetMapping("/comment")
+  @Cacheable
   public ResponseEntity<Map<String, Object>> getComment(@RequestBody BoardDTO boardDTO) {
     Map<String, Object> map = new HashMap<>();
     try {
+      List<CommentDTO> list = service.getAllComment(boardDTO);
+      Collections.sort(list);
       map.put("msg", true);
-      map.put("result", service.getAllComment(boardDTO));
+      map.put("result", list);
     } catch (Exception e) {
       e.printStackTrace();
       map.put("msg", false);
