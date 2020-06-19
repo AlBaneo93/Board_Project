@@ -30,7 +30,7 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import 'codemirror/lib/codemirror.css';
 
 import http from '@/axios/http-commons';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	components: {
@@ -46,9 +46,18 @@ export default {
 		...mapGetters(['user']),
 	},
 	methods: {
+		...mapActions(['getCurrentDate']),
 		addBoard() {
+			let dto = {
+				id: 0,
+				title: this.title,
+				content: this.input,
+				uid: this.user.id,
+				writer: this.user.name,
+				createdat: this.getCurrentDate(),
+			};
 			http
-				.post('/board', this.input)
+				.post('/board', dto)
 				.then(result => {
 					if (result.data.msg) {
 						alert('게시글이 정상적으로 등록되었습니다.');

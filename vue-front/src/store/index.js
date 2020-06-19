@@ -2,57 +2,24 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persistedstate';
 
+import state from './moduels/state';
+import getters from './moduels/getters';
+import actions from './moduels/actions';
+import mutations from './moduels/mutations';
+
 Vue.use(Vuex);
 
+// vuex의 모듈을 분리하여 사용하는 방법
 const store = new Vuex.Store({
 	plugins: [
 		VuexPersistence({
 			storage: window.sessionStorage,
 		}),
 	],
-	state: {
-		islogin: false,
-		user: {
-			email: '',
-			name: '',
-			img: '',
-			accesstoken: '',
-			refreshtoken: '',
-		},
-	},
-	mutations: {
-		userLogin(state, payload) {
-			state.islogin = true;
-			state.user.email = payload.email;
-			state.user.name = payload.name;
-			state.user.img = payload.img;
-			state.user.accesstoken = payload.accesstoken;
-			state.user.refreshtoken = payload.refreshtoken;
-		},
-		userLogout(state) {
-			state.islogin = false;
-			state.user = {};
-		},
-	},
-	actions: {
-		userLogin(context, payload) {
-			context.commit('userLogin', payload);
-		},
-		userLogout(context) {
-			return context.commit('userLogout');
-		},
-	},
-	getters: {
-		user(state) {
-			return {
-				islogin: state.islogin,
-				email: state.user.email,
-				name: state.user.name,
-				access: state.user.access,
-				refresh: state.user.refresh,
-			};
-		},
-	},
+	state,
+	getters,
+	actions,
+	mutations,
 });
 
 export default store;
