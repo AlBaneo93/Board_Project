@@ -10,38 +10,38 @@ import Editor from '@/components/Editor';
 Vue.use(VueRouter);
 
 const routes = [
-	{
-		name: 'Home',
-		path: '/',
-		component: Home,
-	},
-	{
-		name: 'Board',
-		path: '/board',
-		component: Board,
-	},
-	{
-		name: 'BoardDetail',
-		path: '/board/:id',
-		component: BoardDetail,
-		props: true,
-	},
-	{
-		name: 'Profile',
-		path: '/profile',
-		component: Profile,
-	},
-	{
-		name: 'Editor',
-		path: '/editor',
-		comments: Editor,
-	},
+  {
+    name: 'Home',
+    path: '/',
+    component: Home,
+  },
+  {
+    name: 'Board',
+    path: '/board',
+    component: Board,
+  },
+  {
+    name: 'BoardDetail',
+    path: '/board/:id',
+    component: BoardDetail,
+    props: true,
+  },
+  {
+    name: 'Profile',
+    path: '/profile',
+    component: Profile,
+  },
+  {
+    name: 'Editor',
+    path: '/editor',
+    comments: Editor,
+  },
 ];
 
 const router = new VueRouter({
-	mode: 'history',
-	// base: process.env.BASE,
-	routes,
+  mode: 'history',
+  // base: process.env.BASE,
+  routes,
 });
 
 export default router;

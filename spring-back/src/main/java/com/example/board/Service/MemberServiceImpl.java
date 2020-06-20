@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MemberServiceImpl implements IMemberService {
-  private MemberRepository repository;
+  private final MemberRepository repository;
 
   public MemberServiceImpl(MemberRepository repository) {
     this.repository = repository;

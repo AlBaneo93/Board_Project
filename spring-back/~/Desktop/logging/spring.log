@@ -1,0 +1,267 @@
+2020-06-20 16:37:42.264  INFO 98633 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98633 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:37:42.267  INFO 98633 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:37:42.318  INFO 98633 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:37:42.319  INFO 98633 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:37:43.427  INFO 98633 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:37:43.524  INFO 98633 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79ms. Found 3 JPA repository interfaces.
+2020-06-20 16:37:44.323  INFO 98633 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:37:44.336  INFO 98633 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:37:44.337  INFO 98633 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:37:45.030  INFO 98633 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:37:45.030  INFO 98633 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2711 ms
+2020-06-20 16:37:45.268  INFO 98633 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:37:45.322  INFO 98633 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:37:45.339  INFO 98633 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:37:45.380  INFO 98633 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:37:45.558  INFO 98633 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:37:45.583  WARN 98633 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:37:45.672  INFO 98633 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:37:46.117  INFO 98633 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:37:46.134  INFO 98633 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:37:47.336  INFO 98633 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:37:47.345  INFO 98633 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:37:47.653  INFO 98633 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:37:47.695  INFO 98633 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:37:48.025  INFO 98633 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:37:48.026  INFO 98633 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:37:48.047  INFO 98633 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:37:48.086  INFO 98633 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:37:48.218  INFO 98633 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:37:48.253  INFO 98633 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:37:48.407  INFO 98633 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:37:48.420  INFO 98633 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 6.535 seconds (JVM running for 7.309)
+2020-06-20 16:38:32.399  INFO 98633 --- [http-nio-10001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:38:32.399  INFO 98633 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:38:32.409  INFO 98633 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-06-20 16:38:32.462  WARN 98633 --- [http-nio-10001-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.example.board.Controller.MemberController.getAllMember(com.example.board.DTO.MemberDTO)]
+2020-06-20 16:39:30.174  INFO 98633 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:39:30.177  INFO 98633 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:39:30.180  INFO 98633 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 16:39:30.207  INFO 98633 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-20 16:39:34.246  INFO 98815 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98815 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:39:34.249  INFO 98815 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:39:34.298  INFO 98815 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:39:34.298  INFO 98815 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:39:35.278  INFO 98815 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:39:35.358  INFO 98815 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 3 JPA repository interfaces.
+2020-06-20 16:39:36.055  INFO 98815 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:39:36.066  INFO 98815 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:39:36.067  INFO 98815 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:39:36.178  INFO 98815 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:39:36.179  INFO 98815 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1880 ms
+2020-06-20 16:39:36.369  INFO 98815 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:39:36.419  INFO 98815 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:39:36.437  INFO 98815 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:39:36.475  INFO 98815 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:39:36.622  INFO 98815 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:39:36.655  WARN 98815 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:39:36.725  INFO 98815 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:39:37.127  INFO 98815 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:39:37.142  INFO 98815 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:39:37.991  INFO 98815 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:39:37.998  INFO 98815 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:39:38.250  INFO 98815 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:39:38.292  INFO 98815 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:39:38.613  INFO 98815 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:39:38.614  INFO 98815 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:39:38.634  INFO 98815 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:39:38.672  INFO 98815 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:39:38.799  INFO 98815 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:39:38.829  INFO 98815 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:39:38.982  INFO 98815 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:39:38.994  INFO 98815 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 5.122 seconds (JVM running for 5.987)
+2020-06-20 16:39:44.266  INFO 98815 --- [http-nio-10001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:39:44.266  INFO 98815 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:39:44.273  INFO 98815 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-06-20 16:39:44.308  WARN 98815 --- [http-nio-10001-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.example.board.Controller.MemberController.getAllMember(com.example.board.DTO.MemberDTO)]
+2020-06-20 16:44:44.728  INFO 98815 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:44:44.732  INFO 98815 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:44:44.734  INFO 98815 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 16:44:44.758  INFO 98815 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-20 16:44:48.646  INFO 98878 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98878 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:44:48.649  INFO 98878 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:44:48.699  INFO 98878 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:44:48.699  INFO 98878 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:44:49.687  INFO 98878 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:44:49.771  INFO 98878 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74ms. Found 3 JPA repository interfaces.
+2020-06-20 16:44:50.464  INFO 98878 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:44:50.476  INFO 98878 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:44:50.476  INFO 98878 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:44:50.585  INFO 98878 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:44:50.586  INFO 98878 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1887 ms
+2020-06-20 16:44:50.772  INFO 98878 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:44:50.824  INFO 98878 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:44:50.842  INFO 98878 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:44:50.876  INFO 98878 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:44:51.024  INFO 98878 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:44:51.063  WARN 98878 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:44:51.127  INFO 98878 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:44:51.530  INFO 98878 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:44:51.545  INFO 98878 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:44:52.389  INFO 98878 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:44:52.397  INFO 98878 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:44:52.643  INFO 98878 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:44:52.687  INFO 98878 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:44:53.011  INFO 98878 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:44:53.012  INFO 98878 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:44:53.031  INFO 98878 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:44:53.069  INFO 98878 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:44:53.198  INFO 98878 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:44:53.226  INFO 98878 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:44:53.383  INFO 98878 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:44:53.395  INFO 98878 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 5.121 seconds (JVM running for 6.02)
+2020-06-20 16:45:16.377  INFO 98878 --- [http-nio-10001-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:45:16.378  INFO 98878 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:45:16.386  INFO 98878 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-06-20 16:45:16.424  WARN 98878 --- [http-nio-10001-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.example.board.Controller.MemberController.getAllMember(com.example.board.DTO.MemberDTO)]
+2020-06-20 16:47:35.482  INFO 98878 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:47:35.486  INFO 98878 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:47:35.488  INFO 98878 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 16:47:35.516  INFO 98878 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-20 16:47:39.016  INFO 98927 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98927 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:47:39.019  INFO 98927 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:47:39.068  INFO 98927 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:47:39.069  INFO 98927 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:47:40.066  INFO 98927 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:47:40.147  INFO 98927 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71ms. Found 3 JPA repository interfaces.
+2020-06-20 16:47:40.837  INFO 98927 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:47:40.851  INFO 98927 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:47:40.851  INFO 98927 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:47:40.968  INFO 98927 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:47:40.968  INFO 98927 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1899 ms
+2020-06-20 16:47:41.156  INFO 98927 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:47:41.211  INFO 98927 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:47:41.228  INFO 98927 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:47:41.262  INFO 98927 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:47:41.407  INFO 98927 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:47:41.443  WARN 98927 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:47:41.511  INFO 98927 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:47:41.916  INFO 98927 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:47:41.931  INFO 98927 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:47:42.782  INFO 98927 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:47:42.789  INFO 98927 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:47:43.041  INFO 98927 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:47:43.084  INFO 98927 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:47:43.408  INFO 98927 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:47:43.410  INFO 98927 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:47:43.428  INFO 98927 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:47:43.466  INFO 98927 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:47:43.592  INFO 98927 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:47:43.622  INFO 98927 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:47:43.779  INFO 98927 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:47:43.791  INFO 98927 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 5.145 seconds (JVM running for 5.874)
+2020-06-20 16:47:50.851  INFO 98927 --- [http-nio-10001-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:47:50.852  INFO 98927 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:47:50.859  INFO 98927 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-06-20 16:47:50.892  WARN 98927 --- [http-nio-10001-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.example.board.Controller.MemberController.getAllMember(com.example.board.DTO.MemberDTO)]
+2020-06-20 16:48:39.824  INFO 98927 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:48:39.826  INFO 98927 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:48:39.828  INFO 98927 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 16:48:39.855  INFO 98927 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-20 16:48:42.923  INFO 98950 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98950 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:48:42.927  INFO 98950 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:48:42.974  INFO 98950 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:48:42.975  INFO 98950 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:48:43.891  INFO 98950 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:48:43.961  INFO 98950 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63ms. Found 3 JPA repository interfaces.
+2020-06-20 16:48:44.583  INFO 98950 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:48:44.592  INFO 98950 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:48:44.593  INFO 98950 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:48:44.696  INFO 98950 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:48:44.697  INFO 98950 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1722 ms
+2020-06-20 16:48:44.864  INFO 98950 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:48:44.902  INFO 98950 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:48:44.920  INFO 98950 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:48:44.941  INFO 98950 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:48:45.046  INFO 98950 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:48:45.115  WARN 98950 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:48:45.132  INFO 98950 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:48:45.516  INFO 98950 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:48:45.528  INFO 98950 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:48:46.315  INFO 98950 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:48:46.322  INFO 98950 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:48:46.547  INFO 98950 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:48:46.587  INFO 98950 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:48:46.880  INFO 98950 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:48:46.882  INFO 98950 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:48:46.896  INFO 98950 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:48:46.931  INFO 98950 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:48:47.049  INFO 98950 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:48:47.076  INFO 98950 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:48:47.214  INFO 98950 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:48:47.226  INFO 98950 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 4.654 seconds (JVM running for 5.335)
+2020-06-20 16:48:52.473  INFO 98950 --- [http-nio-10001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:48:52.473  INFO 98950 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:48:52.479  INFO 98950 --- [http-nio-10001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-06-20 16:48:52.511  WARN 98950 --- [http-nio-10001-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.example.board.Controller.MemberController.getAllMember(com.example.board.DTO.MemberDTO)]
+2020-06-20 16:49:14.431  INFO 98950 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:49:14.434  INFO 98950 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:49:14.436  INFO 98950 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 16:49:14.464  INFO 98950 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-06-20 16:49:17.601  INFO 98958 --- [restartedMain] com.example.board.DemoApplication        : Starting DemoApplication on AlMac.local with PID 98958 (/Users/alban/Documents/Board_Project/spring-back/build/classes/java/main started by alban in /Users/alban/Documents/Board_Project/spring-back)
+2020-06-20 16:49:17.604  INFO 98958 --- [restartedMain] com.example.board.DemoApplication        : No active profile set, falling back to default profiles: default
+2020-06-20 16:49:17.652  INFO 98958 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-06-20 16:49:17.653  INFO 98958 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-06-20 16:49:18.608  INFO 98958 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-20 16:49:18.682  INFO 98958 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65ms. Found 3 JPA repository interfaces.
+2020-06-20 16:49:19.337  INFO 98958 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 10001 (http)
+2020-06-20 16:49:19.347  INFO 98958 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-20 16:49:19.348  INFO 98958 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-20 16:49:19.452  INFO 98958 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-20 16:49:19.452  INFO 98958 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1799 ms
+2020-06-20 16:49:19.626  INFO 98958 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-20 16:49:19.674  INFO 98958 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-20 16:49:19.693  INFO 98958 --- [restartedMain] c.e.board.Controller.MemberController    : Member Controller Construct
+2020-06-20 16:49:19.718  INFO 98958 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-20 16:49:19.851  INFO 98958 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-20 16:49:19.898  WARN 98958 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-20 16:49:19.946  INFO 98958 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-20 16:49:20.348  INFO 98958 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-20 16:49:20.362  INFO 98958 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-20 16:49:21.194  INFO 98958 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-20 16:49:21.202  INFO 98958 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 16:49:21.440  INFO 98958 --- [task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-06-20 16:49:21.490  INFO 98958 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-20 16:49:21.799  INFO 98958 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 10001 (http) with context path ''
+2020-06-20 16:49:21.800  INFO 98958 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-20 16:49:21.817  INFO 98958 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-20 16:49:21.856  INFO 98958 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-20 16:49:21.978  INFO 98958 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getCommentUsingGET_1
+2020-06-20 16:49:22.007  INFO 98958 --- [restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-20 16:49:22.158  INFO 98958 --- [restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-20 16:49:22.170  INFO 98958 --- [restartedMain] com.example.board.DemoApplication        : Started DemoApplication in 4.917 seconds (JVM running for 5.613)
+2020-06-20 16:49:25.837  INFO 98958 --- [http-nio-10001-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-20 16:49:25.838  INFO 98958 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-20 16:49:25.844  INFO 98958 --- [http-nio-10001-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-06-20 17:03:17.021  WARN 98958 --- [http-nio-10001-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 63] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:08:35.808  WARN 98958 --- [http-nio-10001-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 62] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:10:09.326  WARN 98958 --- [http-nio-10001-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 61] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:11:27.895  WARN 98958 --- [http-nio-10001-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 64] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:11:30.465  WARN 98958 --- [http-nio-10001-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 66] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:13:40.775  WARN 98958 --- [http-nio-10001-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 63] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:13:42.419  WARN 98958 --- [http-nio-10001-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 64] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:13:43.657  WARN 98958 --- [http-nio-10001-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 65] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:13:45.494  WARN 98958 --- [http-nio-10001-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 62] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:14:41.213  WARN 98958 --- [http-nio-10001-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 60] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:16:47.773  WARN 98958 --- [http-nio-10001-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 64] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:19:32.628  WARN 98958 --- [http-nio-10001-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 63] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:21:53.440  WARN 98958 --- [http-nio-10001-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 64] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:23:48.835  WARN 98958 --- [http-nio-10001-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `long` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `long` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 61] (through reference chain: com.example.board.DTO.CommentDTO["createdat"])]
+2020-06-20 17:52:43.800  INFO 98958 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-06-20 17:52:43.805  INFO 98958 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-06-20 17:52:43.808  INFO 98958 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-06-20 17:52:43.833  INFO 98958 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

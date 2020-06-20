@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardServiceImpl implements IBoardService {
 
-  private BoardRepository repository;
+  private final BoardRepository repository;
 
   // 생성자를 이용한 의존성 주입
   public BoardServiceImpl(BoardRepository repository) {

@@ -1,9 +1,9 @@
 <template>
-	<v-sheet color="grey" height="200"></v-sheet>
+  <v-sheet color="grey" height="200"></v-sheet>
 </template>
 
 <script>
-export default {};
+  export default {};
 </script>
 
 <style></style>

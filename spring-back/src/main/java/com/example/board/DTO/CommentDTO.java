@@ -37,15 +37,9 @@ public class CommentDTO implements Comparable<CommentDTO> {
 
   @Override
   public int compareTo(CommentDTO o) {
-    if (this.createdat < o.createdat) {
-      return -1;
-    } else if (this.createdat == o.createdat) {
+    if (this.createdat == o.createdat) {
       return Integer.compare(this.level, o.level);
     }
-    return 1;
+    return Long.compare(this.createdat, o.createdat);
   }
-
-  //  현재 댓글이 갖고있는 답글
-  //  얘를 jpa로 어떻게 집어넣지
-  //  @Transient private List<CommentDTO> reply;
 }

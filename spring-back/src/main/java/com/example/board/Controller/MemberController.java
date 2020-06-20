@@ -5,6 +5,8 @@ import com.example.board.Service.IMemberService;
 import com.example.board.Util.Hashing;
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
   private final IMemberService service;
   private final Hashing hashing;
+  private Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public MemberController(IMemberService service, Hashing hashing) {
+    logger.info("Member Controller Construct");
     this.service = service;
     this.hashing = hashing;
   }
@@ -96,8 +100,8 @@ public class MemberController {
   }
 
   @GetMapping("/member")
-  @Cacheable
-  public ResponseEntity<Map<String, Object>> getAllMember(@RequestBody MemberDTO memberDTO) {
+  @Cacheable(cacheNames = "AllMembers")
+  public ResponseEntity<Map<String, Object>> getAllMember() {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("msg", true);

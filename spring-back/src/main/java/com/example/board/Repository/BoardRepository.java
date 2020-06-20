@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
-
-}
+public interface BoardRepository extends JpaRepository<BoardDTO, Long> {}

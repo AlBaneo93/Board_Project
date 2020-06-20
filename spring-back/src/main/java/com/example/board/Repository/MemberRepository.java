@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @EnableJpaRepositories
 public interface MemberRepository extends JpaRepository<MemberDTO, Long> {
 
-    Optional<MemberDTO> findByEmailAndPassword(String email, String password);
+  Optional<MemberDTO> findByEmailAndPassword(String email, String password);
 }

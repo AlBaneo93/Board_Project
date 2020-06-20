@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @EnableJpaRepositories
 public interface CommentRepository extends JpaRepository<CommentDTO, Long> {
 
-    List<CommentDTO> findAllByBoardidOrderByCreatedatDescLevelDesc(long boardid);
+  List<CommentDTO> findAllByBoardidOrderByCreatedatDescLevelDesc(long boardid);
 }

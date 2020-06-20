@@ -1,9 +1,15 @@
 <template>
-	<h1>여기는 홈 페이지</h1>
+  <v-content>
+    <v-carousel></v-carousel>
+  </v-content>
 </template>
 
 <script>
-export default {};
+  export default {
+    data() {
+      return {};
+    },
+  };
 </script>
 
 <style></style>
