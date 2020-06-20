@@ -1,15 +1,15 @@
 <template>
-  <v-content>
-    <v-carousel></v-carousel>
-  </v-content>
+	<v-content>
+		<v-carousel></v-carousel>
+	</v-content>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
-    },
-  };
+export default {
+	data() {
+		return {};
+	},
+};
 </script>
 
 <style></style>
