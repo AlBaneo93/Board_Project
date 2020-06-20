@@ -9,6 +9,18 @@ import Editor from '@/components/Editor';
 
 Vue.use(VueRouter);
 
+function authCheck(to, from, next) {
+	let isLogin = window.sessionStorage.getItem('islogin');
+
+	if (!isLogin) {
+		// 로그인 안되어있을때 에러메시지 띄우며 이동
+		alert('로그인을 먼저 해주세요');
+		next('/');
+		return;
+	}
+	next();
+}
+
 const routes = [
 	{
 		name: 'Home',
@@ -19,22 +31,26 @@ const routes = [
 		name: 'Board',
 		path: '/board',
 		component: Board,
+		beforeEnter: authCheck,
 	},
 	{
 		name: 'BoardDetail',
 		path: '/board/:id',
 		component: BoardDetail,
 		props: true,
+		beforeEnter: authCheck,
 	},
 	{
 		name: 'Profile',
 		path: '/profile',
 		component: Profile,
+		beforeEnter: authCheck,
 	},
 	{
 		name: 'Editor',
 		path: '/editor',
 		comments: Editor,
+		beforeEnter: authCheck,
 	},
 ];
 
