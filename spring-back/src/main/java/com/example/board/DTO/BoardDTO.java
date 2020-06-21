@@ -28,10 +28,10 @@ public class BoardDTO {
   @Column(length = 5000)
   private String content;
 
-  @Column private long writerid;
+  @Column private long uid;
 
   @Column(length = 30)
-  private String writer;
+  private String name;
 
-  private long createdat;
+  @Column private long createdat;
 }

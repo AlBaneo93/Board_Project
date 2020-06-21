@@ -1,24 +1,7 @@
 <template>
-	<v-content>
-		<!-- <v-form>
-      <v-row>
-        <v-col :cols="10" md="8">
-          <v-text-field
-            v-model="comment.comment"
-            label="댓글을 달아주세요!"
-            clearable
-            clear-icon="mdi-close"
-            prepend-icon="mdi-pen-plus"
-            counter
-          ></v-text-field>
-        </v-col>
-        <v-col :cols="2" md="2">
-          <v-btn @click="addComment">댓글 작성</v-btn>
-        </v-col>
-      </v-row>
-    </v-form> -->
+	<div>
 		<slot name="comment" :comments="commentList"></slot>
-	</v-content>
+	</div>
 </template>
 
 <script>

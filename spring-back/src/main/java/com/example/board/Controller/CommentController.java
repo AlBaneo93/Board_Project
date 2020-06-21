@@ -72,7 +72,7 @@ public class CommentController {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("msg", true);
-      map.put("result", service.getComment(CommentDTO.builder().id(id).build()));
+      map.put("result", service.getAllComment(BoardDTO.builder().id(id).build()));
     } catch (Exception e) {
       e.printStackTrace();
       map.put("msg", false);
@@ -80,6 +80,7 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
+//  TODO : what is this fucntion
   @GetMapping("/comment")
   @Cacheable
   public ResponseEntity<Map<String, Object>> getComment(@RequestBody BoardDTO boardDTO) {
@@ -95,4 +96,5 @@ public class CommentController {
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
+
 }

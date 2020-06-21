@@ -11,18 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class GlobalConfig implements WebMvcConfigurer {
 
-    private String basePath;
-    private String[] localPath;
+    private final String basePath;
+    private final String[] localPath;
 
     public GlobalConfig(@Value("${local.image.base}") String basePath,
         @Value("${upload.image.foldername}") String[] localPath) {
         this.basePath = basePath;
         this.localPath = localPath;
-    }
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("*").maxAge(3600);
     }
 
     @Override

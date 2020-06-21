@@ -1,9 +1,9 @@
 const actions = {
 	userLogin(context, payload) {
-		context.commit.userLogin('userLogin', payload);
+		context.commit('userLogin', payload);
 	},
 	userLogout(context) {
-		return context.commit.userLogout('userLogout');
+		context.commit('userLogout');
 	},
 };
 

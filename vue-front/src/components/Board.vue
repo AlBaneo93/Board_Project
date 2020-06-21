@@ -1,7 +1,8 @@
 <template>
 	<v-container>
 		<v-row justify="end">
-			<v-btn @click="$router.push('/editor')">게시글 작성</v-btn>
+			<router-link to="/editor">게시글 작성</router-link>
+			<!-- <v-btn @click="$router.push('/editor')">게시글 작성</v-btn> -->
 		</v-row>
 		<!-- TODO : To implement data table  -->
 		<!-- <v-card>
@@ -40,7 +41,7 @@
 							<v-divider vertical></v-divider>
 						</td>
 						<td>
-							{{ board.writer }}
+							{{ board.name }}
 						</td>
 						<td>
 							{{ board.createdat }}
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+import Util from '@/util/index';
 import http from '@/axios/http-commons';
 import { mapGetters } from 'vuex';
 
@@ -81,12 +83,12 @@ export default {
 					writer: '3',
 				},
 			],
-			headers: [
-				{ text: '제목', vlaue: 'title', align: 'center' },
-				{ text: '작성자', vlaue: 'writer', align: 'right' },
-				{ text: 'name', vlaue: 'name', align: 'right' },
-				{ text: '게시일', vlaue: 'id', align: 'right' },
-			],
+			// headers: [
+			// 	{ text: '제목', vlaue: 'title', align: 'center' },
+			// 	{ text: '작성자', vlaue: 'writer', align: 'right' },
+			// 	{ text: 'name', vlaue: 'name', align: 'right' },
+			// 	{ text: '게시일', vlaue: 'id', align: 'right' },
+			// ],
 		};
 	},
 	computed: {
@@ -96,9 +98,16 @@ export default {
 		getBoardList() {
 			this.progress = true;
 			http
-				.get('/boardlist')
+				.get('/board')
 				.then(result => {
-					this.boardList = result.data.result;
+					let tmpBoardList = result.data.result;
+					for (let tt in tmpBoardList) {
+						tmpBoardList[tt].createdat = Util.stringToDateform(
+							tmpBoardList[tt].createdat,
+						);
+					}
+
+					this.boardlist = tmpBoardList;
 				})
 				.catch(err => {
 					console.log(err);

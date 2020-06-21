@@ -30,7 +30,12 @@
 					v-model="user.password2"
 				></v-text-field>
 				<v-text-field label="name" required v-model="user.name"></v-text-field>
-				<v-file-input label="img" required v-model="user.img"></v-file-input>
+				<v-file-input
+					label="Avatar"
+					required
+					v-model="img"
+					accept="image/*"
+				></v-file-input>
 				<v-checkbox
 					v-model="agree"
 					color="success"
@@ -50,6 +55,7 @@
 
 <script>
 import http from '@/axios/http-commons';
+import httpImage from '@/axios/http-images';
 
 export default {
 	props: {
@@ -59,6 +65,7 @@ export default {
 		return {
 			user: {},
 			agree: false,
+			img: null,
 		};
 	},
 	methods: {
@@ -67,11 +74,23 @@ export default {
 				.post('/signup', this.user)
 				.then(result => {
 					if (result.data.msg) {
+						// formdata로 보내주어야 받을 수 있다
+						// content type 은 multipart로
+						let imageObj = new FormData();
+						imageObj.append('profile', this.img);
+						imageObj.append('filename', result.data.result.email);
+						return httpImage.post('/profile', imageObj);
+					}
+				})
+				.then(result => {
+					if (result.data.msg) {
 						alert('회원가입이 성공적으로 완료되었습니다');
 						this.user = {};
 						this.agree = false;
 						this.$emit('closesignup');
+						return;
 					}
+					throw new Error('이미지 업로드중 에러 발생');
 				})
 				.catch(() => {
 					alert('회원 가입중 오류가 발생하였습니다.');

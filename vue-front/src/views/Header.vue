@@ -1,5 +1,9 @@
 <template>
-	<v-system-bar fluid height="50%">
+	<v-system-bar
+		fluid
+		height="50%"
+		class="indigo lighten-1 white--text text-center"
+	>
 		<v-row justify="center" align="center" fluid>
 			<v-col cols="2">
 				<router-link to="/">HOME</router-link>
@@ -8,9 +12,12 @@
 			<v-col cols="1">
 				<router-link to="/board">Board</router-link>
 			</v-col>
-			<template v-if="user.islogin">
+			<template v-if="islogin">
 				<v-col cols="1">
 					<router-link to="/profile">{{ user.name }}</router-link>
+				</v-col>
+				<v-col>
+					<v-btn @click="signOut" color="red" outlined>Sign Out</v-btn>
 				</v-col>
 			</template>
 			<template v-else>
@@ -35,7 +42,7 @@
 import SignIn from '@/components/SignIn';
 import SignUp from '@/components/SignUp';
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	components: {
@@ -63,9 +70,10 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters(['user']),
+		...mapGetters(['user', 'islogin']),
 	},
 	methods: {
+		...mapActions(['userLogout']),
 		close(val) {
 			if (val === 1) {
 				this.setSignIn.isShow = false;
@@ -80,8 +88,17 @@ export default {
 				this.setSignUp.isShow = true;
 			}
 		},
+		signOut() {
+			this.userLogout();
+			if (window.location.pathname !== '/') this.$router.replace('/');
+		},
 	},
 };
 </script>
 
-<style></style>
+<style scoped>
+a {
+	color: white;
+	text-decoration: none;
+}
+</style>

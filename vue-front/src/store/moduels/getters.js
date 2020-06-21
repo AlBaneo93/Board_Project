@@ -7,6 +7,9 @@ const getters = {
 			refresh: state.user.refresh,
 		};
 	},
+	islogin(state) {
+		return state.islogin;
+	},
 };
 
 export default getters;

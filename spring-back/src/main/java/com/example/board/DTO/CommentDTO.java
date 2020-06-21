@@ -21,7 +21,6 @@ public class CommentDTO implements Comparable<CommentDTO> {
 
   private String comment;
 
-  //  솔직히 uid는 노필요 일것 같은데
   private long uid;
 
   private String name;

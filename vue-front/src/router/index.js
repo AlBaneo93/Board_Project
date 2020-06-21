@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Util from '@/util/index';
+
 import Home from '@/components/Main';
 import Board from '@/components/Board';
 import BoardDetail from '@/components/BoardDetail';
@@ -10,9 +12,7 @@ import Editor from '@/components/Editor';
 Vue.use(VueRouter);
 
 function authCheck(to, from, next) {
-	let isLogin = window.sessionStorage.getItem('islogin');
-
-	if (!isLogin) {
+	if (!Util.authCheck()) {
 		// 로그인 안되어있을때 에러메시지 띄우며 이동
 		alert('로그인을 먼저 해주세요');
 		next('/');
@@ -49,7 +49,7 @@ const routes = [
 	{
 		name: 'Editor',
 		path: '/editor',
-		comments: Editor,
+		component: Editor,
 		beforeEnter: authCheck,
 	},
 ];

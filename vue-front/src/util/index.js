@@ -10,13 +10,24 @@ function getCurrentDate() {
 	return year + '' + month + '' + day + '' + hour + '' + minute;
 }
 
+function stringToDateform(time) {
+	time += '';
+	let year = time.substr(0, 4);
+	let month = time.substr(4, 2);
+	let day = time.substr(6, 2);
+	let hour = time.substr(8, 2);
+	let minute = time.substr(10, 2);
+	return year + '.' + month + '.' + day + ' ' + hour + ':' + minute;
+}
+
 function authCheck() {
-	return window.sessionStorage.getItem('islogin');
+	return JSON.parse(window.sessionStorage.getItem('vuex')).islogin;
 }
 
 const data = {
 	getCurrentDate,
 	authCheck,
+	stringToDateform,
 };
 
 export default data;

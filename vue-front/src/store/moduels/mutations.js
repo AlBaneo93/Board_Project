@@ -1,6 +1,7 @@
 const mutations = {
 	userLogin(state, payload) {
 		state.islogin = true;
+		state.user.id = payload.id;
 		state.user.email = payload.email;
 		state.user.name = payload.name;
 		state.user.img = payload.img;
