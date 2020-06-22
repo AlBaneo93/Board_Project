@@ -60,4 +60,10 @@ const router = new VueRouter({
 	routes,
 });
 
+// 페이지의 제목을 바꾼다
+router.beforeEach((to, from, next) => {
+	document.title = 'Practice Board';
+	next();
+});
+
 export default router;
