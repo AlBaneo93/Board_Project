@@ -109,9 +109,7 @@ export default {
 
 					this.boardlist = tmpBoardList;
 				})
-				.catch(err => {
-					console.log(err);
-				});
+				.catch(() => {});
 			this.progress = false;
 		},
 		goBoardDetail(id) {
@@ -119,7 +117,7 @@ export default {
 		},
 		overEvent(event) {
 			// 색 변경
-			// console.log(event);
+			//
 			let targetTR = event.target.parentNode;
 			targetTR.style.backgroundColor = '#ECEFF1';
 			// targetTR.children.array.forEach(element => {
@@ -128,7 +126,7 @@ export default {
 		},
 		outEvent(event) {
 			// 색 원복
-			// console.log(event);
+			//
 			let targetTR = event.target.parentNode;
 			targetTR.style.backgroundColor = 'white';
 			// targetTR.children.array.forEach(element => {

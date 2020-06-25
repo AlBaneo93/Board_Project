@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
   db:
@@ -10,7 +10,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
-    volume:
+    volumes:
       - /home/ubuntu/dev/Board_Project/db:/var/lib/mysql
     command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
 
@@ -30,7 +30,7 @@ services:
     ports:
       - "10001:10001"
     depends_on:
-      - board_db
+      - db
 
   image:
     build:

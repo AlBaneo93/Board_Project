@@ -37,9 +37,7 @@ export default {
 						comment.next = [];
 					});
 				})
-				.catch(err => {
-					console.log(err);
-				});
+				.catch(() => {});
 		},
 	},
 	mounted() {},

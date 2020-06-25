@@ -38,12 +38,8 @@ export default {
 		updateProfile() {
 			http
 				.put('/member', this.updateUserData)
-				.then(result => {
-					console.log(result);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+				.then(() => {})
+				.catch(() => {});
 		},
 	},
 };

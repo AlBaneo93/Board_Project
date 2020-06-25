@@ -69,9 +69,7 @@ export default {
 					}
 					alert('로그인 실패\n아이디와 패스워드를 다시한번 확인해주세요');
 				})
-				.catch(err => {
-					console.log(err);
-				});
+				.catch(() => {});
 		},
 	},
 };

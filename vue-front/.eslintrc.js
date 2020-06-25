@@ -11,7 +11,7 @@ module.exports = {
 	],
 	// 코드 정리 플러그인 추가
 	plugins: ['prettier'],
-	env:{
+	env: {
 		browser: true,
 		node: true,
 		es6: true,

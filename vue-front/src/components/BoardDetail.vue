@@ -207,9 +207,7 @@ export default {
 				.then(result => {
 					if (result.data.msg) this.commentList = result.data.result;
 				})
-				.catch(err => {
-					console.log(err);
-				});
+				.catch(() => {});
 		},
 		addComment(list) {
 			if (!util.authCheck()) {
@@ -229,12 +227,8 @@ export default {
 			list.push(comment);
 			http
 				.post('/comment', comment)
-				.then(result => {
-					console.log(result);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+				.then(() => {})
+				.catch(() => {});
 		},
 		addReply(item) {
 			if (!util.authCheck()) {
@@ -260,27 +254,22 @@ export default {
 			// 		// if (result.data.msg) {
 			// 		// 	alert('답글이 성공적으로 등록되었습니다');
 			// 		// }
-			// 		console.log(result);
+			//
 			// 	})
 			// 	.catch(err => {
 			// 		// alert('댓글 등록 중 오류가 발생하였습니다');
-			// 		console.log(err);
+			//
 			// 	});
 		},
 		updateReply(comment) {
 			http
 				.put('/comment', comment)
-				.then(result => {
-					console.log(result);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+				.then(() => {})
+				.catch(() => {});
 		},
 		deleteReply(comment, list) {
 			let delIdx;
 			for (let idx in list) {
-				console.log(idx, list[idx]);
 				if (idx === comment.id) {
 					delIdx = idx;
 					break;
@@ -290,12 +279,8 @@ export default {
 
 			http
 				.delete('/comment', comment)
-				.then(result => {
-					console.log(result);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+				.then(() => {})
+				.catch(() => {});
 		},
 		updateBoard() {
 			// go editor and then update content
