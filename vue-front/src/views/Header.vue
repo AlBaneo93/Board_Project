@@ -1,9 +1,6 @@
 <template>
-	<v-system-bar
-		fluid
-		height="50%"
-		class="indigo lighten-1 white--text text-center"
-	>
+	<v-app-bar fluid class="indigo lighten-1 white--text text-center">
+		<!-- height="50%" -->
 		<v-row justify="center" align="center" fluid>
 			<v-col cols="2">
 				<router-link to="/">HOME</router-link>
@@ -35,7 +32,7 @@
 		</v-row>
 		<SignIn :setDialog="setSignIn" @closesignin="close(1)" />
 		<SignUp :setDialog="setSignUp" @closesignup="close(2)" />
-	</v-system-bar>
+	</v-app-bar>
 </template>
 
 <script>
@@ -97,8 +94,11 @@ export default {
 </script>
 
 <style scoped>
-a {
+a:link {
 	color: white;
 	text-decoration: none;
+}
+a:visited {
+	color: white;
 }
 </style>

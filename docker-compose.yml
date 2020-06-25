@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:5.7.29
+    restart: always
+    ports:
+      - "15000:3306"
+    container_name: board_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=board
+    volume:
+      - /home/ubuntu/dev/Board_Project/db:/var/lib/mysql
+    command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
+
+  front:
+    build:
+      context: ./vue-front
+      dockerfile: Dockerfile
+    container_name: board_front
+    ports:
+      - "80:80"
+
+  back:
+    build:
+      context: ./spring-back
+      dockerfile: Dockerfile
+    container_name: board_back
+    ports:
+      - "10001:10001"
+    depends_on:
+      - board_db
+
+  image:
+    build:
+      context: ./spring-image
+      dockerfile: Dockerfile
+    container_name: board_image
+    ports:
+    - "10101:10101"

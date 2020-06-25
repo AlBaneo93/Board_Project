@@ -80,21 +80,4 @@ public class CommentController {
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
 
-//  TODO : what is this fucntion
-  @GetMapping("/comment")
-  @Cacheable
-  public ResponseEntity<Map<String, Object>> getComment(@RequestBody BoardDTO boardDTO) {
-    Map<String, Object> map = new HashMap<>();
-    try {
-      List<CommentDTO> list = service.getAllComment(boardDTO);
-      Collections.sort(list);
-      map.put("msg", true);
-      map.put("result", list);
-    } catch (Exception e) {
-      e.printStackTrace();
-      map.put("msg", false);
-    }
-    return new ResponseEntity<>(map, HttpStatus.OK);
-  }
-
 }
