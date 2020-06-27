@@ -7,7 +7,7 @@ services:
     restart: always
     ports:
       - "15000:3306"
-    container_name: board_db
+    container_name: board_db_compose
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
