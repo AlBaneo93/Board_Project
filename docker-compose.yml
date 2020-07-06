@@ -12,9 +12,11 @@ services:
       - MYSQL_DATABASE=board
     volumes:
       - /home/alban/board/data/mysql:/var/lib/mysql
-    command: [
-        'mysqld','--character-set-server=utf8mb4',
-        '--collation-server=utf8mb4_unicode_ci'
+    command:
+      [
+        "mysqld",
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci",
       ]
     networks:
       - board_network
@@ -38,10 +40,6 @@ services:
       - "10001:10001"
     networks:
       - board_network
-    links:
-      - db
-    depends_on:
-      - db
 
   image:
     container_name: board_image
@@ -52,11 +50,6 @@ services:
       - "10101:10101"
     networks:
       - board_network
-    links:
-      - db
-    depends_on:
-      - db
 
 networks:
   board_network:
-
