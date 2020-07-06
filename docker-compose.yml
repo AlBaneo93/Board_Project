@@ -13,6 +13,8 @@ services:
     volumes:
       - /home/alban/board/data/mysql:/var/lib/mysql
     command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
+    networks:
+      - board_network
 
   front:
     build:
@@ -21,6 +23,8 @@ services:
     container_name: board_front
     ports:
       - "80:80"
+    networks:
+      - board_network
 
   back:
     build:
@@ -31,6 +35,8 @@ services:
       - "10001:10001"
     depends_on:
       - db
+    networks:
+      - board_network
 
   image:
     build:
@@ -41,7 +47,9 @@ services:
       - "10101:10101"
     depends_on:
       - db
+    networks:
+      - board_network
 
 networks:
   board_network:
-  driver: bridge
+    driver: bridge
