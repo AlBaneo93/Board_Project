@@ -38,6 +38,8 @@ services:
       - "10001:10001"
     networks:
       - board_network
+    links:
+      - db
     depends_on:
       - db
 
@@ -50,6 +52,8 @@ services:
       - "10101:10101"
     networks:
       - board_network
+    links:
+      - db
     depends_on:
       - db
 
