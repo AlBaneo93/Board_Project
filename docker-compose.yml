@@ -12,10 +12,12 @@ services:
       - MYSQL_DATABASE=board
     volumes:
       - /home/alban/board/data/mysql:/var/lib/mysql
-    command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
+    command: [
+        'mysqld','--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci'
+      ]
     networks:
       - board_network
-
 
   front:
     build:
@@ -27,29 +29,30 @@ services:
     networks:
       - board_network
 
-  back:
+  api:
+    container_name: board_api
     build:
       context: ./spring-back
       dockerfile: Dockerfile
-    container_name: board_back
     ports:
       - "10001:10001"
-    depends_on:
-      - db
     networks:
       - board_network
+    depends_on:
+      - db
 
   image:
+    container_name: board_image
     build:
       context: ./spring-image
       dockerfile: Dockerfile
-    container_name: board_image
     ports:
       - "10101:10101"
-    depends_on:
-      - db
     networks:
       - board_network
+    depends_on:
+      - db
 
 networks:
   board_network:
+
