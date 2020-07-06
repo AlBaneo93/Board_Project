@@ -53,4 +53,3 @@ services:
 
 networks:
   board_network:
-    driver: bridge
