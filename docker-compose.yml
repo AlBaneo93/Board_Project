@@ -1,5 +1,4 @@
-version: "2"
-
+version: "3"
 
 services:
   db:
@@ -12,7 +11,7 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
     volumes:
-      - /home/ubuntu/dev/Board_Project/db:/var/lib/mysql
+      - /home/alban/board/data/mysql:/var/lib/mysql
     command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
 
   front:
@@ -39,4 +38,10 @@ services:
       dockerfile: Dockerfile
     container_name: board_image
     ports:
-    - "10101:10101"
+      - "10101:10101"
+    depends_on:
+      - db
+
+networks:
+  board_network:
+  driver: bridge
