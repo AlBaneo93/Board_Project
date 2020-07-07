@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 @WebFilter(urlPatterns = "/*")
 public class RequestFilter implements Filter {
 
+  //  filter로 요청을 받은 후 매퍼클래스를 이용해 실제 로직으로 던져준다
+
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {

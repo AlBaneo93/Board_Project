@@ -3,15 +3,13 @@ package com.example.board.Service;
 import com.example.board.DTO.MemberDTO;
 import com.example.board.Repository.MemberRepository;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class MemberServiceImpl implements IMemberService {
   private final MemberRepository repository;
-
-  public MemberServiceImpl(MemberRepository repository) {
-    this.repository = repository;
-  }
 
   @Override
   public MemberDTO addMember(MemberDTO memberDTO) {

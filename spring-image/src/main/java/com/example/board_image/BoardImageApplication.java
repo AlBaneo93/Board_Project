@@ -8,9 +8,6 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 public class BoardImageApplication {
 
-    @Autowired
-    Environment environment;
-
     public static void main(String[] args) {
         SpringApplication.run(BoardImageApplication.class, args);
 

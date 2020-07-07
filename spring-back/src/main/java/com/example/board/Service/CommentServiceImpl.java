@@ -4,15 +4,13 @@ import com.example.board.DTO.BoardDTO;
 import com.example.board.DTO.CommentDTO;
 import com.example.board.Repository.CommentRepository;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class CommentServiceImpl implements ICommentService {
   private final CommentRepository repository;
-
-  public CommentServiceImpl(CommentRepository repository) {
-    this.repository = repository;
-  }
 
   @Override
   public CommentDTO addComment(CommentDTO commentDTO) {

@@ -1,55 +1,57 @@
 version: "3"
 
+networks:
+  mynet:
+
 services:
-  db:
-    image: mysql:5.7.29
-    container_name: db
+  board_db:
+    image: mysql
+    networks:
+      mynet:
+        aliases:
+          - database
+          - db
+          - mysql
     restart: always
     ports:
+      - 3306
       - "15000:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
-    volumes:
-      - /home/alban/board/data/mysql:/var/lib/mysql
+    # volumes:
+    #   - /Users/alban/Documents/Board_Project/data/mysql:/var/lib/mysql
     command:
       [
-        "mysqld",
         "--character-set-server=utf8mb4",
         "--collation-server=utf8mb4_unicode_ci",
       ]
-    networks:
-      - board_network
+    container_name: db
 
   front:
-    build:
-      context: ./vue-front
-      dockerfile: Dockerfile
+    image: board_front
+    networks:
+      - mynet
+    restart: always
     container_name: board_front
     ports:
-      - "80:80"
-    networks:
-      - board_network
+      - 80:80
 
   api:
-    container_name: board_api
-    build:
-      context: ./spring-back
-      dockerfile: Dockerfile
-    ports:
-      - "10001:10001"
+    image: board_back
     networks:
-      - board_network
+      - mynet
+    ports:
+      - 10001:10001
+    depends_on:
+      - board_db
 
   image:
     container_name: board_image
-    build:
-      context: ./spring-image
-      dockerfile: Dockerfile
-    ports:
-      - "10101:10101"
+    image: board_image
     networks:
-      - board_network
-
-networks:
-  board_network:
+      - mynet
+    ports:
+      - 10101:10101
+    depends_on:
+      - board_db

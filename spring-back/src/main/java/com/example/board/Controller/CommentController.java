@@ -3,11 +3,9 @@ package com.example.board.Controller;
 import com.example.board.DTO.BoardDTO;
 import com.example.board.DTO.CommentDTO;
 import com.example.board.Service.ICommentService;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import org.springframework.cache.annotation.Cacheable;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,12 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 public class CommentController {
   private final ICommentService service;
-
-  public CommentController(ICommentService service) {
-    this.service = service;
-  }
 
   @PostMapping("/comment")
   public ResponseEntity<Map<String, Object>> addComment(@RequestBody CommentDTO commentDTO) {
@@ -79,5 +74,4 @@ public class CommentController {
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
   }
-
 }
