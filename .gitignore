@@ -32,3 +32,5 @@ out/
 .vscode/
 
 .DS**
+build-project.sh
+build-compose.sh
