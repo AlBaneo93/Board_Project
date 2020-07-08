@@ -3,10 +3,10 @@ version: "3.4"
 networks:
   mynet:
 
-
 services:
   board_db:
     image: mysql
+    container_name: db
     networks:
       mynet:
         aliases:
@@ -20,14 +20,17 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
-    # volumes:
-    #   - /Users/alban/Documents/Board_Project/data/mysql:/var/lib/mysql
+      - MYSQL_USER=boarduser
+      - MYSQL_PASSWORD=boarduserpwd
+    volumes:
+      - /home/alban/data/db:/var/lib/mysql
+      # - /home/alban/data/log/db:/var/lib/docker/containers
     command:
       [
         "--character-set-server=utf8mb4",
         "--collation-server=utf8mb4_unicode_ci",
       ]
-    container_name: db
+
 
   front:
     build:
@@ -47,6 +50,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - mynet
+    volumes:
+      - /home/alban/data/log/api:/var/lib/log
     ports:
       - 10001:10001
       - 10001
@@ -60,6 +65,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - mynet
+    volumes:
+      - /home/alban/data/log/image:/var/lib/log
     ports:
       - 10101:10101
       - 10101
