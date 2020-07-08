@@ -22,12 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class MemberController {
+  private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
   private final IMemberService service;
   private final Hashing hashing;
-  private Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public MemberController(IMemberService service, Hashing hashing) {
-    logger.info("Member Controller Construct");
     this.service = service;
     this.hashing = hashing;
   }
@@ -40,7 +39,7 @@ public class MemberController {
       memberDTO.setPassword(hashing.getHahsResult(memberDTO.getPassword()));
       map.put("result", service.addMember(memberDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -54,7 +53,7 @@ public class MemberController {
       memberDTO.setPassword(hashing.getHahsResult(memberDTO.getPassword()));
       map.put("result", service.signIn(memberDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -67,7 +66,7 @@ public class MemberController {
       map.put("msg", true);
       map.put("result", service.updateMember(memberDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -80,7 +79,7 @@ public class MemberController {
       service.deleteMember(memberDTO);
       map.put("msg", true);
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -93,7 +92,7 @@ public class MemberController {
       map.put("msg", true);
       map.put("result", MemberDTO.builder().id(id).build());
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -107,7 +106,7 @@ public class MemberController {
       map.put("msg", true);
       map.put("result", service.getAllMember());
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);

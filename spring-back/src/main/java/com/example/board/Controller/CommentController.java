@@ -5,7 +5,8 @@ import com.example.board.DTO.CommentDTO;
 import com.example.board.Service.ICommentService;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,9 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
 public class CommentController {
+  private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
   private final ICommentService service;
+
+  public CommentController(ICommentService service) {
+    this.service = service;
+  }
 
   @PostMapping("/comment")
   public ResponseEntity<Map<String, Object>> addComment(@RequestBody CommentDTO commentDTO) {
@@ -30,7 +35,7 @@ public class CommentController {
       map.put("msg", true);
       map.put("result", service.addComment(commentDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -43,7 +48,7 @@ public class CommentController {
       map.put("msg", true);
       map.put("result", service.updateComment(commentDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -56,7 +61,7 @@ public class CommentController {
       service.deleteComment(commentDTO);
       map.put("msg", true);
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -69,7 +74,7 @@ public class CommentController {
       map.put("msg", true);
       map.put("result", service.getAllComment(BoardDTO.builder().id(id).build()));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // " + e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);

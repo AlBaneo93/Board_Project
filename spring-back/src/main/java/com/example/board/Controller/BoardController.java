@@ -4,7 +4,8 @@ import com.example.board.DTO.BoardDTO;
 import com.example.board.Service.IBoardService;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
 public class BoardController {
   private final IBoardService service;
+  private Logger logger = LoggerFactory.getLogger(BoardController.class);
+
+  public BoardController(IBoardService service) {
+    this.service = service;
+  }
 
   @PostMapping("/board")
   public ResponseEntity<Map<String, Object>> addBoard(@RequestBody BoardDTO boardDTO) {
@@ -30,7 +35,7 @@ public class BoardController {
       map.put("msg", true);
       map.put("result", service.addBoard(boardDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // "+ e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -43,7 +48,7 @@ public class BoardController {
       map.put("msg", true);
       map.put("result", service.updateBoard(boardDTO));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // "+ e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -56,7 +61,7 @@ public class BoardController {
       map.put("msg", true);
       service.deleteBoard(boardDTO);
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // "+ e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -69,7 +74,7 @@ public class BoardController {
       map.put("msg", true);
       map.put("result", service.getBoard(BoardDTO.builder().id(id).build()));
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // "+ e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
@@ -83,7 +88,7 @@ public class BoardController {
       map.put("msg", true);
       map.put("result", service.getBoardList());
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error(e.getMessage() + " // "+ e.getCause().getMessage());
       map.put("msg", false);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);
