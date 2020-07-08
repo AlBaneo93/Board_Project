@@ -1,6 +1,7 @@
 package com.example.board.Service;
 
 import com.example.board.DTO.BoardDTO;
+import com.example.board.Exception.CommentException;
 import com.example.board.Repository.BoardRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -37,4 +38,5 @@ public class BoardServiceImpl implements IBoardService {
   public List<BoardDTO> getBoardList() {
     return repository.findAll();
   }
+
 }
