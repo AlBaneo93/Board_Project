@@ -31,7 +31,6 @@ services:
         "--collation-server=utf8mb4_unicode_ci",
       ]
 
-
   front:
     build:
       context: ./vue-front
@@ -49,7 +48,10 @@ services:
       context: ./spring-back
       dockerfile: Dockerfile
     networks:
-      - mynet
+      mynet:
+        aliases:
+          - api
+          - main
     volumes:
       - /home/alban/data/log/api:/var/lib/log
     ports:
@@ -64,7 +66,9 @@ services:
       context: ./spring-image
       dockerfile: Dockerfile
     networks:
-      - mynet
+      mynet:
+        aliases:
+          - image
     volumes:
       - /home/alban/data/log/image:/var/lib/log
     ports:
