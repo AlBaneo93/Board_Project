@@ -52,6 +52,4 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 // Commons-codec for URLCodec
     compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
-
-
 }

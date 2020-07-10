@@ -44,6 +44,7 @@ services:
 
   api:
     container_name: board_api
+    restart: on-failure
     networks:
       appnet:
         aliases:
@@ -63,6 +64,7 @@ services:
 
   image:
     container_name: board_image
+    restart: on-failure
     networks:
       appnet:
         aliases:
