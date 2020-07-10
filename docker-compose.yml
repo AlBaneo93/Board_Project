@@ -1,30 +1,30 @@
 version: "3.4"
 
 networks:
-  mynet:
+  appnet:
+    external:
+      name: ${NETNAME}
 
 services:
   board_db:
     image: mysql
     container_name: db
     networks:
-      mynet:
+      appnet:
         aliases:
-          - database
           - db
-          - mysql
-    restart: always
+    restart: on-failure
     ports:
       - 3306
       - "15000:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
-      - MYSQL_USER=boarduser
-      - MYSQL_PASSWORD=boarduserpwd
-    volumes:
-      - /home/alban/data/db:/var/lib/mysql
-      # - /home/alban/data/log/db:/var/lib/docker/containers
+      - MYSQL_USER=buser
+      - MYSQL_PASSWORD=buserpwd
+    # volumes:
+    # - /home/alban/data/db:/var/lib/mysql
+    # - /home/alban/data/log/db:/var/lib/docker/containers
     command:
       [
         "--character-set-server=utf8mb4",
@@ -35,25 +35,26 @@ services:
     build:
       context: ./vue-front
       dockerfile: Dockerfile
-    networks:
-      - mynet
     restart: always
     container_name: board_front
+    networks:
+      - appnet
     ports:
       - 80:80
 
   api:
     container_name: board_api
+    networks:
+      appnet:
+        aliases:
+          - api
     build:
       context: ./spring-back
       dockerfile: Dockerfile
-    networks:
-      mynet:
-        aliases:
-          - api
-          - main
-    volumes:
-      - /home/alban/data/log/api:/var/lib/log
+    environment:
+      - TYPE=${TYPE}
+    # volumes:
+    #   - /home/alban/data/log/api:/var/lib/log
     ports:
       - 10001:10001
       - 10001
@@ -62,15 +63,17 @@ services:
 
   image:
     container_name: board_image
+    networks:
+      appnet:
+        aliases:
+          - image
+    environment:
+      - TYPE=${TYPE}
     build:
       context: ./spring-image
       dockerfile: Dockerfile
-    networks:
-      mynet:
-        aliases:
-          - image
-    volumes:
-      - /home/alban/data/log/image:/var/lib/log
+    # volumes:
+    #   - /home/alban/data/log/image:/var/lib/log
     ports:
       - 10101:10101
       - 10101
