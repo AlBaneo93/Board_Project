@@ -12,7 +12,7 @@ services:
     networks:
       appnet:
         aliases:
-          - db
+          - database
     restart: on-failure
     ports:
       - 3306
@@ -22,9 +22,9 @@ services:
       - MYSQL_DATABASE=board
       - MYSQL_USER=buser
       - MYSQL_PASSWORD=buserpwd
-    # volumes:
-    # - /home/alban/data/db:/var/lib/mysql
-    # - /home/alban/data/log/db:/var/lib/docker/containers
+    volumes:
+    - /home/alban/data/db:/var/lib/mysql
+    - /home/alban/data/log/db:/var/lib/docker/containers
     command:
       [
         "--character-set-server=utf8mb4",
@@ -53,8 +53,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - TYPE=${TYPE}
-    # volumes:
-    #   - /home/alban/data/log/api:/var/lib/log
+    volumes:
+      - /home/alban/data/log/api:/var/lib/log
     ports:
       - 10001:10001
       - 10001
@@ -72,8 +72,8 @@ services:
     build:
       context: ./spring-image
       dockerfile: Dockerfile
-    # volumes:
-    #   - /home/alban/data/log/image:/var/lib/log
+    volumes:
+      - /home/alban/data/log/image:/var/lib/log
     ports:
       - 10101:10101
       - 10101
