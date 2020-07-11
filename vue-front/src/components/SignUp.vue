@@ -7,48 +7,63 @@
 		:overlay-color="setDialog.overlay_color"
 	>
 		<!-- :hide-overlay="setDialog.hide_overlay" -->
-		<v-card>
-			<v-toolbar flat dark color="primary">Sign Up</v-toolbar>
-			<v-form
-				@keydown.enter.capture="signup"
-				@keydown.esc.capture="$emit('closesignup')"
-			>
-				<v-text-field
-					label="email"
-					required
-					v-model="user.email"
-					autofocus
-				></v-text-field>
-				<v-text-field
-					label="password"
-					required
-					v-model="user.password"
-				></v-text-field>
-				<v-text-field
-					label="password check"
-					required
-					v-model="user.password2"
-				></v-text-field>
-				<v-text-field label="name" required v-model="user.name"></v-text-field>
-				<v-file-input
-					label="Avatar"
-					required
-					v-model="img"
-					accept="image/*"
-				></v-file-input>
-				<v-checkbox
-					v-model="agree"
-					color="success"
-					label="do you agree"
-					required
-				></v-checkbox>
-				<v-card-actions>
-					<v-btn outlined color="red" @click="$emit('closesignup')"
-						>go back
-					</v-btn>
-					<v-btn outlined color="success" @click="signup">sign up</v-btn>
-				</v-card-actions>
-			</v-form>
+		<v-card flat>
+			<v-toolbar flat dark color="indigo lighten-1">Sign Up</v-toolbar>
+			<v-card flat width="90%" style="margin:auto;">
+				<v-form
+					@keydown.enter.capture="signup"
+					@keydown.esc.capture="$emit('closesignup')"
+				>
+					<v-text-field
+						color="indigo lighten-1"
+						label="email"
+						required
+						v-model="user.email"
+						autofocus
+					></v-text-field>
+					<v-text-field
+						color="indigo lighten-1"
+						label="password"
+						required
+						:counter="20"
+						type="password"
+						v-model="user.password"
+					></v-text-field>
+					<v-text-field
+						color="indigo lighten-1"
+						label="password check"
+						required
+						type="password"
+						:counter="20"
+						v-model="user.password2"
+					></v-text-field>
+					<v-text-field
+						color="indigo lighten-1"
+						label="name"
+						required
+						v-model="user.name"
+					></v-text-field>
+					<v-file-input
+						color="indigo lighten-1"
+						label="Avatar"
+						required
+						v-model="img"
+						accept="image/*"
+					></v-file-input>
+					<v-checkbox
+						v-model="agree"
+						color="indigo lighten-1"
+						label="do you agree"
+						required
+					></v-checkbox>
+					<v-card-actions>
+						<v-btn outlined color="red" @click="$emit('closesignup')"
+							>go back
+						</v-btn>
+						<v-btn outlined color="success" @click="signup">sign up</v-btn>
+					</v-card-actions>
+				</v-form>
+			</v-card>
 		</v-card>
 	</v-dialog>
 </template>

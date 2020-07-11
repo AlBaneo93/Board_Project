@@ -1,13 +1,16 @@
 <template>
-	<v-app-bar fluid class="indigo lighten-1 white--text text-center">
+	<v-container fluid dense class="indigo lighten-1 white--text text-center">
 		<!-- height="50%" -->
-		<v-row justify="center" align="center" fluid>
+		<v-row justify="center" align="center" fluid dense>
 			<v-col cols="2">
 				<router-link to="/">HOME</router-link>
 			</v-col>
 			<v-spacer></v-spacer>
 			<v-col cols="1">
 				<router-link to="/board">Board</router-link>
+			</v-col>
+			<v-col cols="1">
+				<router-link to="/about">About</router-link>
 			</v-col>
 			<template v-if="islogin">
 				<v-col cols="1">
@@ -19,20 +22,20 @@
 			</template>
 			<template v-else>
 				<v-col cols="1">
-					<v-btn @click="open(1)">
-						SignIn
-					</v-btn>
+					<a @click="open(1)" style="text-decoration:none; color:white;"
+						>SignIn</a
+					>
 				</v-col>
 				<v-col cols="1">
-					<v-btn @click="open(2)">
+					<a @click="open(2)" style="text-decoration:none; color:white;">
 						SignUp
-					</v-btn>
+					</a>
 				</v-col>
 			</template>
 		</v-row>
 		<SignIn :setDialog="setSignIn" @closesignin="close(1)" />
 		<SignUp :setDialog="setSignUp" @closesignup="close(2)" />
-	</v-app-bar>
+	</v-container>
 </template>
 
 <script>

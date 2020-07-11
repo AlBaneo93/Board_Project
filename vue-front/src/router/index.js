@@ -8,6 +8,7 @@ import Board from '@/components/Board';
 import BoardDetail from '@/components/BoardDetail';
 import Profile from '@/components/Profile';
 import Editor from '@/components/Editor';
+import About from '@/components/About';
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
 		path: '/editor',
 		component: Editor,
 		beforeEnter: authCheck,
+	},
+	{
+		name: 'About',
+		path: '/about',
+		component: About,
 	},
 ];
 

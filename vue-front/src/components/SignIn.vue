@@ -8,33 +8,38 @@
 		:overlay-opacity="setDialog.overlay_opacity"
 	>
 		<!-- :hide-overlay="setDialog.hide_overlay" -->
-		<v-card>
-			<v-toolbar boarflat dark color="primary">Sign In</v-toolbar>
-			<v-form
-				@keydown.enter.capture="signin"
-				@keydown.esc.capture="$emit('closesignin')"
-			>
-				<v-text-field
-					v-model="user.email"
-					:counter="20"
-					required
-					label="e-mail"
-					autofocus
-				></v-text-field>
-				<v-text-field
-					v-model="user.password"
-					:counter="20"
-					required
-					label="password"
-				></v-text-field>
+		<v-card flat>
+			<v-toolbar boarflat dark color="indigo lighten-1">Sign In</v-toolbar>
+			<v-card flat width="90%" style="margin:auto;">
+				<v-form
+					@keydown.enter.capture="signin"
+					@keydown.esc.capture="$emit('closesignin')"
+				>
+					<v-text-field
+						v-model="user.email"
+						:counter="20"
+						required
+						label="e-mail"
+						autofocus
+						color="indigo lighten-1"
+					></v-text-field>
+					<v-text-field
+						v-model="user.password"
+						:counter="20"
+						required
+						type="password"
+						label="password"
+						color="indigo lighten-1"
+					></v-text-field>
 
-				<v-card-actions>
-					<v-btn outlined color="red" @click="$emit('closesignin')"
-						>go back
-					</v-btn>
-					<v-btn outlined color="success" @click="signin">sign in</v-btn>
-				</v-card-actions>
-			</v-form>
+					<v-card-actions>
+						<v-btn outlined color="red" @click="$emit('closesignin')"
+							>go back
+						</v-btn>
+						<v-btn outlined color="success" @click="signin">sign in</v-btn>
+					</v-card-actions>
+				</v-form>
+			</v-card>
 		</v-card>
 	</v-dialog>
 </template>
