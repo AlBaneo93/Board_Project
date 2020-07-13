@@ -1,17 +1,14 @@
 version: "3.4"
 
 networks:
-  ci-test_appnet:
+  appnet:
 
 services:
   board_db:
     image: mysql
-    container_name: db
+    container_name: database
     networks:
-      ci-test_appnet:
-        aliases:
-          - database
-    restart: on-failure
+      - appnet
     ports:
       - 3306
       - "15000:3306"
@@ -36,16 +33,14 @@ services:
     restart: always
     container_name: board_front
     networks:
-      - ci-test_appnet
+      - appnet
     ports:
       - 80:80
 
   api:
     container_name: board_api
     networks:
-      ci-test_appnet:
-        aliases:
-          - api
+      - appnet
     build:
       context: ./spring-back
       dockerfile: Dockerfile
@@ -62,9 +57,7 @@ services:
   image:
     container_name: board_image
     networks:
-      ci-test_appnet:
-        aliases:
-          - image
+      - appnet
     environment:
       - TYPE=${TYPE}
     build:
