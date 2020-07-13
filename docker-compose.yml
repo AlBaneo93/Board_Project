@@ -8,7 +8,8 @@ services:
     image: mysql
     networks:
       - appnet
-    expose: 3306
+    expose:
+      - 3306
     ports:
       - "15000:3306"
     environment:
@@ -50,7 +51,8 @@ services:
       - TYPE=${TYPE}
     volumes:
       - /home/alban/data/log/api:/var/lib/log
-    expose: 10001
+    expose:
+      - 10001
     ports:
       - 10001:10001
     depends_on:
@@ -70,7 +72,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /home/alban/data/log/image:/var/lib/log
-    expose: 10101
+    expose:
+      - 10101
     ports:
       - 10101:10101
     depends_on:
