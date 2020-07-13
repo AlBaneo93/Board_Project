@@ -1,15 +1,8 @@
 version: "3.4"
 
-networks:
-  appnet:
-
 services:
   database:
-    image: mysql
-    networks:
-      - appnet
-    expose:
-      - 3306
+    image: database
     ports:
       - "15000:3306"
     environment:
@@ -31,19 +24,12 @@ services:
       context: ./vue-front
       dockerfile: Dockerfile
     restart: always
-    container_name: board_front
-    networks:
-      - appnet
+    container_name: front
     ports:
       - 80:80
 
   api:
-    container_name: board_api
-    restart: on-failure
-    links:
-      - "database:database"
-    # networks:
-    #   - appnet
+    container_name: api
     build:
       context: ./spring-back
       dockerfile: Dockerfile
@@ -51,20 +37,13 @@ services:
       - TYPE=${TYPE}
     volumes:
       - /home/alban/data/log/api:/var/lib/log
-    expose:
-      - 10001
     ports:
       - 10001:10001
     depends_on:
       - database
 
   image:
-    container_name: board_image
-    restart: on-failure
-    links:
-      - "database:database"
-    # networks:
-    #   - appnet
+    container_name: image
     environment:
       - TYPE=${TYPE}
     build:
