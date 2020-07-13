@@ -4,9 +4,8 @@ networks:
   appnet:
 
 services:
-  board_db:
+  database:
     image: mysql
-    container_name: database
     networks:
       - appnet
     ports:
