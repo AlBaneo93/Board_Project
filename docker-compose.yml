@@ -5,6 +5,7 @@ services:
     image: mysql
     container_name: database
     ports:
+      - 3306
       - "15000:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
