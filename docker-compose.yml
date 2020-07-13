@@ -52,7 +52,7 @@ services:
       - 10001:10001
       - 10001
     depends_on:
-      - board_db
+      - database
 
   image:
     container_name: board_image
@@ -70,4 +70,4 @@ services:
       - 10101:10101
       - 10101
     depends_on:
-      - board_db
+      - database
