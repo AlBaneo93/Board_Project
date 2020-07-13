@@ -1,14 +1,14 @@
 version: "3.4"
 
 networks:
-  appnet:
+  ci-test_appnet:
 
 services:
   board_db:
     image: mysql
     container_name: db
     networks:
-      appnet:
+      ci-test_appnet:
         aliases:
           - database
     restart: on-failure
@@ -36,14 +36,14 @@ services:
     restart: always
     container_name: board_front
     networks:
-      - appnet
+      - ci-test_appnet
     ports:
       - 80:80
 
   api:
     container_name: board_api
     networks:
-      appnet:
+      ci-test_appnet:
         aliases:
           - api
     build:
@@ -62,7 +62,7 @@ services:
   image:
     container_name: board_image
     networks:
-      appnet:
+      ci-test_appnet:
         aliases:
           - image
     environment:
