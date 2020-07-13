@@ -7,6 +7,8 @@ services:
     ports:
       - 3306
       - "15000:3306"
+    networks:
+      - "my-network"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
@@ -26,6 +28,8 @@ services:
       context: ./vue-front
       dockerfile: Dockerfile
     restart: always
+    networks:
+      - "my-network"
     container_name: front
     ports:
       - 80:80
@@ -42,6 +46,8 @@ services:
     ports:
       - 10001
       - 10001:10001
+    networks:
+      - "my-network"
     depends_on:
       - database
 
@@ -57,5 +63,10 @@ services:
     ports:
       - 10101
       - 10101:10101
+    networks:
+      - "my-network"
     depends_on:
       - database
+
+networks:
+  my-network:
