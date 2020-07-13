@@ -12,9 +12,9 @@ export default {
 	data() {
 		return {
 			images: [
-				'@/assets/carousel/img1.png',
-				'@/assets/carousel/img2.png',
-				'@/assets/carousel/img3.png',
+				require('@/assets/carousel/img1.png'),
+				require('@/assets/carousel/img2.png'),
+				require('@/assets/carousel/img3.png'),
 			],
 		};
 	},

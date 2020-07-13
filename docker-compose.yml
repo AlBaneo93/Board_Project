@@ -2,8 +2,6 @@ version: "3.4"
 
 networks:
   appnet:
-    external:
-      name: ${NETNAME}
 
 services:
   board_db:
