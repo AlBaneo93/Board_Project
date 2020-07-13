@@ -8,8 +8,8 @@ services:
     image: mysql
     networks:
       - appnet
+    expose: 3306
     ports:
-      - 3306
       - "15000:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
@@ -17,8 +17,8 @@ services:
       - MYSQL_USER=buser
       - MYSQL_PASSWORD=buserpwd
     volumes:
-    - /home/alban/data/db:/var/lib/mysql
-    - /home/alban/data/log/db:/var/lib/docker/containers
+      - /home/alban/data/db:/var/lib/mysql
+      - /home/alban/data/log/db:/var/lib/docker/containers
     command:
       [
         "--character-set-server=utf8mb4",
@@ -39,8 +39,10 @@ services:
   api:
     container_name: board_api
     restart: on-failure
-    networks:
-      - appnet
+    links:
+      - "database:database"
+    # networks:
+    #   - appnet
     build:
       context: ./spring-back
       dockerfile: Dockerfile
@@ -48,17 +50,19 @@ services:
       - TYPE=${TYPE}
     volumes:
       - /home/alban/data/log/api:/var/lib/log
+    expose: 10001
     ports:
       - 10001:10001
-      - 10001
     depends_on:
       - database
 
   image:
     container_name: board_image
     restart: on-failure
-    networks:
-      - appnet
+    links:
+      - "database:database"
+    # networks:
+    #   - appnet
     environment:
       - TYPE=${TYPE}
     build:
@@ -66,8 +70,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /home/alban/data/log/image:/var/lib/log
+    expose: 10101
     ports:
       - 10101:10101
-      - 10101
     depends_on:
       - database
