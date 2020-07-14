@@ -7,8 +7,6 @@ services:
     ports:
       - 3306
       - "15000:3306"
-    networks:
-      - "my-network"
     environment:
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=board
