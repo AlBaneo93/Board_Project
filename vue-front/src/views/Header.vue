@@ -22,25 +22,27 @@
 			</template>
 			<template v-else>
 				<v-col cols="1">
-					<a @click="open(1)" style="text-decoration:none; color:white;"
+					<a @click="openDialog(1)" style="text-decoration:none; color:white;"
 						>SignIn</a
 					>
 				</v-col>
 				<v-col cols="1">
-					<a @click="open(2)" style="text-decoration:none; color:white;">
+					<a @click="openDialog(2)" style="text-decoration:none; color:white;">
 						SignUp
 					</a>
 				</v-col>
 			</template>
 		</v-row>
-		<SignIn :setDialog="setSignIn" @closesignin="close(1)" />
-		<SignUp :setDialog="setSignUp" @closesignup="close(2)" />
+		<SignIn :setDialog="setSignIn" @closesignin="closeDialog(1)" />
+		<SignUp :setDialog="setSignUp" @closesignup="closeDialog(2)" />
+		<Notice :setDialog="setNotice" @closeNotice="closeDialog(3)" />
 	</v-container>
 </template>
 
 <script>
 import SignIn from '@/components/SignIn';
 import SignUp from '@/components/SignUp';
+import Notice from '@/components/Notice_dialog';
 
 import { mapGetters, mapActions } from 'vuex';
 
@@ -48,6 +50,7 @@ export default {
 	components: {
 		SignIn,
 		SignUp,
+		Notice,
 	},
 	data() {
 		return {
@@ -67,6 +70,14 @@ export default {
 				overlay_color: 'white',
 				overlay_opacity: '90%',
 			},
+			setNotice: {
+				isShow: true,
+				width: 500,
+				height: 500,
+				hide_overlay: true,
+				overlay_color: 'white',
+				overlay_opacity: '90%',
+			},
 		};
 	},
 	computed: {
@@ -74,18 +85,22 @@ export default {
 	},
 	methods: {
 		...mapActions(['userLogout']),
-		close(val) {
+		closeDialog(val) {
 			if (val === 1) {
 				this.setSignIn.isShow = false;
 			} else if (val === 2) {
 				this.setSignUp.isShow = false;
+			} else if (val == 3) {
+				this.setNotice.isShow = false;
 			}
 		},
-		open(val) {
+		openDialog(val) {
 			if (val === 1) {
 				this.setSignIn.isShow = true;
 			} else if (val === 2) {
 				this.setSignUp.isShow = true;
+			} else if (val == 3) {
+				this.setNotice.isShow = true;
 			}
 		},
 		signOut() {

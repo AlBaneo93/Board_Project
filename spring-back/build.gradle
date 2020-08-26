@@ -23,7 +23,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'mysql:mysql-connector-java'
+
+//    Sprintg Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
 //	Lombok
     compileOnly 'org.projectlombok:lombok'
@@ -52,4 +56,8 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 // Commons-codec for URLCodec
     compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
+}
+
+test {
+    useJUnitPlatform()
 }

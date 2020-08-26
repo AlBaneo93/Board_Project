@@ -2,6 +2,7 @@ package com.example.board.Controller;
 
 import com.example.board.DTO.BoardDTO;
 import com.example.board.Service.IBoardService;
+import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -82,6 +83,7 @@ public class BoardController {
 
   @GetMapping("/board")
   @Cacheable
+  @ApiOperation(response = BoardDTO.class, value = "간단한 설명을 적어줍니다")
   public ResponseEntity<Map<String, Object>> getBoardList() {
     Map<String, Object> map = new HashMap<String, Object>();
     try {

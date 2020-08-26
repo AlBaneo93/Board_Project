@@ -3,12 +3,16 @@ package com.example.board.Service;
 import com.example.board.DTO.MemberDTO;
 import com.example.board.Repository.MemberRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class MemberServiceImpl implements IMemberService {
+public class MemberServiceImpl implements IMemberService, UserDetailsService {
   private final MemberRepository repository;
 
   @Override
@@ -40,5 +44,11 @@ public class MemberServiceImpl implements IMemberService {
   @Override
   public List<MemberDTO> getAllMember() {
     return repository.findAll();
+  }
+
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//    TODO
+    return null;
   }
 }

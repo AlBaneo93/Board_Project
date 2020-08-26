@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +37,9 @@ public class MemberController {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("msg", true);
-      memberDTO.setPassword(hashing.getHahsResult(memberDTO.getPassword()));
+      //      memberDTO.setPassword(hashing.getHahsResult(memberDTO.getPassword())); // 사용자 작성 해싱 코드
+      // Spring security 제공 메서드 이용
+      memberDTO.setPassword(new BCryptPasswordEncoder().encode(memberDTO.getPassword()));
       map.put("result", service.addMember(memberDTO));
     } catch (Exception e) {
       logger.error(e.getMessage() + " // " + e.getCause().getMessage());
