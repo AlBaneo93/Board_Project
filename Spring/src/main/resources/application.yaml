@@ -1,0 +1,29 @@
+server :
+  port : 8080
+  servlet :
+    context-path : /
+
+spring :
+  datasource :
+    url :               jdbc:mariadb://localhost:3308/board
+    password :          root
+    username :          root
+    driver-class-name : org.mariadb.jdbc.Driver
+  jpa :
+    show-sql :     true
+    hibernate :
+      ddl-auto : create-drop
+
+
+  redis :
+    lettuce :
+      pool :
+        max-active : 10
+        max-idle :   10
+        min-idle :   2
+
+    port : 6379
+    host : localhost
+  devtools :
+    restart :
+      enabled : true
