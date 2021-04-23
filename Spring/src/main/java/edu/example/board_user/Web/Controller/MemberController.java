@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -37,9 +38,11 @@ public class MemberController {
 
   @GetMapping
   public ResponseEntity<Map<String, Object>> findAll() {
+    log.info("finall methods called");
     Map<String, Object> map = new HashMap<>();
     try {
-      map.put("result", service.findAll());
+      List<Member> MemberList = service.findAll();
+      map.put("result", MemberList.size() == 0 ? "there is no result" : MemberList);
       map.put("msg", "success");
     } catch (Exception e) {
       map.put("msg", "Error Occurred");
@@ -49,18 +52,15 @@ public class MemberController {
 
   @PostMapping
   public ResponseEntity<Map<String, Object>> signUp(@RequestBody Member member) {
-    log.info("User Access to create User");
-    log.info(member.toString());
+
     Map<String, Object> map = new HashMap<>();
     try {
       member.setCreatedAt(new Date());
       member.setPassword(passwordEncoder.encode(member.getPassword()));
       member.setEnabled(true);
-      log.debug("Member Info: " + member.toString());
       map.put("result", service.create(member));
       map.put("msg", "success");
     } catch (Exception e) {
-      log.debug(e.getMessage());
       map.put("msg", "Error Occurred");
     }
     return ResponseEntity.ok(map);
@@ -87,6 +87,15 @@ public class MemberController {
     } catch (Exception e) {
       map.put("msg", "Error Occurred");
     }
+    return ResponseEntity.ok(map);
+  }
+
+  @GetMapping("/admin")
+  public ResponseEntity<Map<String, Object>> isAdmin() {
+    Map<String, Object> map = new HashMap<>();
+//    log.info("isAdmin : " + member.toString());
+    map.put("result", "Your are a Admin!");
+    map.put("msg", "success");
     return ResponseEntity.ok(map);
   }
 
