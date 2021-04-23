@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,16 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/index")
 public class IndexController {
+
+  @GetMapping("/hello")
+  public ResponseEntity<Map<String, Object>> hello() {
+    SecurityContext context = SecurityContextHolder.getContext();
+    Map<String, Object> map = new HashMap<>();
+    log.info(String.valueOf(context.getAuthentication()));
+    map.put("result", context.getAuthentication());
+    map.put("msg", "success");
+    return ResponseEntity.ok(map);
+  }
 
   @PostMapping("/admin")
   @Secured("hasRole('ROLE_ADMIN')")

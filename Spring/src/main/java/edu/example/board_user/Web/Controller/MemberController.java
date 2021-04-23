@@ -23,8 +23,9 @@ public class MemberController {
 
   private PasswordEncoder passwordEncoder;
 
+  // TODO: 2021-04-24 : 쿼리로 보내야 하는데??? 주소에 바로 못보내나?
   @GetMapping("/{id}")
-  public ResponseEntity<Map<String, Object>> find(@RequestParam Long id) {
+  public ResponseEntity<Map<String, Object>> find(@PathVariable Long id) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.find(Member.builder().id(id).build()));
@@ -38,7 +39,7 @@ public class MemberController {
 
   @GetMapping
   public ResponseEntity<Map<String, Object>> findAll() {
-    log.info("finall methods called");
+
     Map<String, Object> map = new HashMap<>();
     try {
       List<Member> MemberList = service.findAll();
@@ -93,7 +94,7 @@ public class MemberController {
   @GetMapping("/admin")
   public ResponseEntity<Map<String, Object>> isAdmin() {
     Map<String, Object> map = new HashMap<>();
-//    log.info("isAdmin : " + member.toString());
+    //    log.info("isAdmin : " + member.toString());
     map.put("result", "Your are a Admin!");
     map.put("msg", "success");
     return ResponseEntity.ok(map);
