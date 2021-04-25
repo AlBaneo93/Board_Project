@@ -1,7 +1,5 @@
 server :
   port : 8080
-  servlet :
-    context-path : /
 
 spring :
   datasource :
@@ -14,12 +12,11 @@ spring :
     hibernate :
       ddl-auto : update
 
-
   redis :
     lettuce :
       pool :
         max-active : 10
-        max-idle :   10
+        max-idle :   8
         min-idle :   2
 
     port : 6379
@@ -28,4 +25,4 @@ spring :
     restart :
       enabled : true
       poll-interval : 2s
-      quiet-period : 1s
+      quiet-period : 800ms

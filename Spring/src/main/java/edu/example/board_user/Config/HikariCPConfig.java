@@ -28,9 +28,10 @@ public class HikariCPConfig {
     hikariConfig.setPassword(password);
     hikariConfig.setJdbcUrl(url);
     hikariConfig.setConnectionTestQuery("SELECT 1");
+    hikariConfig.setMaximumPoolSize(5);
     hikariConfig.setLeakDetectionThreshold(30000);
-    hikariConfig.setMaximumPoolSize(1000);
-    hikariConfig.setPoolName("Test Pool Name");
+//    hikariConfig.setMaximumPoolSize(1000);
+    hikariConfig.setPoolName("Mariadb-HikariCP");
 
     return new HikariDataSource(hikariConfig);
   }

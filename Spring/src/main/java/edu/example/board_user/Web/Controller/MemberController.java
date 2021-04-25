@@ -23,7 +23,6 @@ public class MemberController {
 
   private PasswordEncoder passwordEncoder;
 
-  // TODO: 2021-04-24 : 쿼리로 보내야 하는데??? 주소에 바로 못보내나?
   @GetMapping("/{id}")
   public ResponseEntity<Map<String, Object>> find(@PathVariable Long id) {
     Map<String, Object> map = new HashMap<>();
@@ -51,7 +50,7 @@ public class MemberController {
     return ResponseEntity.ok(map);
   }
 
-  @PostMapping
+  @PostMapping("/signin")
   public ResponseEntity<Map<String, Object>> signUp(@RequestBody Member member) {
 
     Map<String, Object> map = new HashMap<>();

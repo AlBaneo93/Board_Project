@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>login</title>
-  </head>
-  <body>
-    <h1>Login</h1> <hr>
-    <img src="/img/info.jpeg" />
+</head>
+<body>
+<h1>Login</h1>
+<hr>
 
-    <form action="/login" method="POST">
-<!--      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
-      email : <input type="text" name="email"> <br>
-      password : <input type="password" name="password"> <br>
-      <button type="submit">Login</button>
-    </form> <br>
 
-    <a href="/signup">Go to join! →</a>
-  </body>
+<form action="/login" method="POST">
+    email : <label>
+    <input type="text" name="username">
+</label> <br>
+    password : <label>
+    <input type="password" name="password">
+</label> <br>
+    <button type="submit">Login</button>
+<!--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+</form>
+<br>
+
+</body>
 </html>
