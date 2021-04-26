@@ -1,12 +1,15 @@
 package edu.example.board_user.Web.VO;
 
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,8 +29,9 @@ public class Post {
   @OneToMany(mappedBy = "post")
   private Set<Comment> comments;
 
+
   public void addPost(Comment comment) {
-    this.comments.add(comment);
+    comments.add(comment);
     comment.setPost(this);
   }
 
