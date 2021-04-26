@@ -1,5 +1,6 @@
 package edu.example.board_user.Web.VO;
 
+import java.util.Calendar;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -84,4 +85,8 @@ public class Member implements UserDetails, Serializable {
     return true;
   }
 
+  @PrePersist
+  public void setCreateAt(){
+    this.createdAt = Calendar.getInstance().getTime();
+  }
 }

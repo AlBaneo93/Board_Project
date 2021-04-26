@@ -11,7 +11,7 @@ import java.util.Map;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/post")
+@RequestMapping("/api/posts")
 public class PostController {
 
   private PostService service;

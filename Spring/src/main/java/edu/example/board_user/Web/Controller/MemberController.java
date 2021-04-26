@@ -16,7 +16,7 @@ import java.util.Map;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/member")
+@RequestMapping("/api/members")
 public class MemberController {
 
   private MemberService service;

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
   private final MemberService service;
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+  }
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,8 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/index/user").hasAnyAuthority(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())
             .anyRequest().authenticated()
         .and()
-          .csrf()
-              .disable()
           .formLogin()
             .loginPage("/login").permitAll()
             .successForwardUrl("/success")
@@ -48,8 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .logout()
             .permitAll()
         .and()
-          .httpBasic();
-
+          .httpBasic()
+        .and()
+          .csrf().disable();
     // @formatter:on
   }
 

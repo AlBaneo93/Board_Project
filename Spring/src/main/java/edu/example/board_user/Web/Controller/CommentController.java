@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/comment")
+@RequestMapping("/api/comments")
 public class CommentController {
 
   private CommentService service;
