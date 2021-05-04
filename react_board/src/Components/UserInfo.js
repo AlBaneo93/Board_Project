@@ -1,7 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useReducer} from 'react'
+
 
 
 const UserInfo = () => {
+
+    const [user, setUser] = useState({})
+
+
+    return(
+        <div>
+
+        </div>
+    )
 
 }
 

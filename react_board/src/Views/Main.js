@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import Navigation from "../Components/Navigation";
-import Viewer from "../Components/Viewer";
+import Navigation from "../components/Navigation";
+import Viewer from "../components/Viewer";
 
 const Main = () => {
     return (

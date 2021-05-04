@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import Main from "./Views/Main";
+import Main from "./views/Main";
 
 ReactDOM.render(
     <BrowserRouter>
