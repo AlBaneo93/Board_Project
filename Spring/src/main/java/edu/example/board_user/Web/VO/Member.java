@@ -46,13 +46,13 @@ public class Member implements UserDetails, Serializable {
   @Column(name = "address")
   private Address address;
 
-  @ElementCollection(fetch = FetchType.LAZY, targetClass = Role.class)
+  @ElementCollection(fetch = FetchType.LAZY, targetClass = Authority.class)
   @Column(name = "role")
-  private Set<Role> roles = new HashSet<>();
+  private Set<Authority> authorities = new HashSet<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
+    return authorities.stream().map(authority -> new SimpleGrantedAuthority(authority.name())).collect(Collectors.toList());
   }
 
   @Override
