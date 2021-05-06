@@ -3,6 +3,7 @@ package edu.example.board_user.Auth;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Slf4j
+@Component
 public class CustomAuthFailureHandler implements AuthenticationFailureHandler {
 
   @Override

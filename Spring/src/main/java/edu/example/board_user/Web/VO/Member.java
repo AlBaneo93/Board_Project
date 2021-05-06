@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,8 +25,10 @@ public class Member implements UserDetails, Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotBlank
   private String email;
 
+  @NotBlank
   private String password;
 
   private Boolean enabled;
@@ -42,14 +45,14 @@ public class Member implements UserDetails, Serializable {
   @Column(name = "address")
   private Address address;
 
+  @NotBlank
   @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
-  @Enumerated(EnumType.STRING)
   @Column(name = "role")
-  private Set<Role> roles = new HashSet<>();
+  private Set<Role> authorities = new HashSet<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
+    return authorities.stream().map(authority -> new SimpleGrantedAuthority(authority.name())).collect(Collectors.toList());
   }
 
   @Override

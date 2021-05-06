@@ -1,5 +1,7 @@
 package edu.example.board_user.Web.Controller;
 
+import edu.example.board_user.Exception.UserNotFoundException;
+import edu.example.board_user.Web.DTO.ErrorDTO;
 import edu.example.board_user.Web.Service.MemberService;
 import edu.example.board_user.Web.VO.Member;
 import lombok.AllArgsConstructor;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -50,8 +53,8 @@ public class MemberController {
     return ResponseEntity.ok(map);
   }
 
-  @PostMapping
-  public ResponseEntity<Map<String, Object>> signUp(@RequestBody Member member) {
+  @PostMapping("/signin")
+  public ResponseEntity<?> signUp(@Valid @RequestBody Member member) {
 
     Map<String, Object> map = new HashMap<>();
     try {
@@ -67,7 +70,7 @@ public class MemberController {
   }
 
   @DeleteMapping
-  public ResponseEntity<Map<String, Object>> remove(Member member) {
+  public ResponseEntity<Map<String, Object>> remove(@Valid @RequestBody Member member) {
     Map<String, Object> map = new HashMap<>();
     try {
       service.remove(member);
@@ -79,7 +82,7 @@ public class MemberController {
   }
 
   @PutMapping
-  public ResponseEntity<Map<String, Object>> update(Member member) {
+  public ResponseEntity<Map<String, Object>> update(@Valid @RequestBody Member member) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.update(member));
@@ -97,6 +100,14 @@ public class MemberController {
     map.put("result", "Your are a Admin!");
     map.put("msg", "success");
     return ResponseEntity.ok(map);
+  }
+
+
+  // UserNotFoundException이 발생할 때 사용하는 핸들러
+  // 지정 에러 발생시 에러를 리턴해줌
+  @ExceptionHandler(UserNotFoundException.class)
+  public ErrorDTO userNotFoundExceptionHandler(UserNotFoundException e) {
+    return ErrorDTO.builder().code(999L).message(e.getMessage()).reason(e.getCause().getMessage()).build();
   }
 
 }

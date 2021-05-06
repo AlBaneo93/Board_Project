@@ -2,12 +2,19 @@ package edu.example.board_user.Web.Controller;
 
 import edu.example.board_user.Web.Service.CommentService;
 import edu.example.board_user.Web.VO.Comment;
-import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
@@ -41,7 +48,7 @@ public class CommentController {
   }
 
   @PostMapping
-  public ResponseEntity<Map<String, Object>> save(Comment comment) {
+  public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody Comment comment) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.create(comment));
@@ -53,7 +60,7 @@ public class CommentController {
   }
 
   @DeleteMapping
-  public ResponseEntity<Map<String, Object>> remove(Comment comment) {
+  public ResponseEntity<Map<String, Object>> remove(@Valid @RequestBody Comment comment) {
     Map<String, Object> map = new HashMap<>();
     try {
       service.remove(comment);
@@ -65,7 +72,7 @@ public class CommentController {
   }
 
   @PutMapping
-  public ResponseEntity<Map<String, Object>> update(Comment comment) {
+  public ResponseEntity<Map<String, Object>> update(@Valid @RequestBody Comment comment) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.update(comment));

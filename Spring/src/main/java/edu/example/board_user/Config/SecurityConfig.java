@@ -22,6 +22,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.annotation.PostConstruct;
+
 @Slf4j
 @EnableWebSecurity
 @Configuration
@@ -33,6 +35,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final MemberService service;
 
   private final CustomAuthManager manager;
+
+  private final CustomAuthFailureHandler failureHandler;
+
+  private final CustomAuthSuccessHandler successHandler;
+
+  private CustomAuthenticationFilter authenticationFilter;
+
+  @PostConstruct
+  public void configMemberParameter() {
+    authenticationFilter = new CustomAuthenticationFilter("/auth/login");
+    authenticationFilter.setAuthenticationManager(manager);
+    //    authenticationFilter.setFilterProcessesUrl("/auth/login");
+    authenticationFilter.setAuthenticationSuccessHandler(successHandler);
+    authenticationFilter.setAuthenticationFailureHandler(failureHandler);
+  }
 
   @Override
   public void configure(WebSecurity web) throws Exception {
@@ -53,8 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
         .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // preflight permitted
-            .antMatchers("/","/success","/denied","/auth/login","/auth/logout").permitAll()
-            .antMatchers(HttpMethod.POST, "/api/members").permitAll()
+            .antMatchers("/","/success","/denied","/auth/login").permitAll()
             .antMatchers("/api/index/hello").permitAll()
             .antMatchers("/api/index/admin").hasAuthority(Role.ADMIN.name())
             .antMatchers("/api/index/user").hasAnyAuthority(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())
@@ -71,39 +87,41 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            .permitAll()
         .and()
           .logout()
-            .logoutUrl("/auth/logout").permitAll().invalidateHttpSession(true)
+            .permitAll().invalidateHttpSession(true)
+//        .and()
+//          .httpBasic()
         .and()
-          .httpBasic()
-        .and()
-          .formLogin().disable()
           .csrf().disable()
           .cors().configurationSource(configurationSource())
         .and()
-          // UsernamePasswordAuthenticationFilter앞에 customAuthenticationFilter를 추가한다
-//          .authenticationProvider(authenticationProvider())
-          .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+//        // UsernamePasswordAuthenticationFilter앞에 customAuthenticationFilter를 추가한다
+        .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
     // @formatter:on
+
   }
 
+  //    @Bean
+  //    public AuthenticationProvider authenticationProvider() {
+  //      DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+  //      authenticationProvider.setUserDetailsService(service);
+  //      authenticationProvider.setPasswordEncoder(passwordEncoder);
+  //      return authenticationProvider;
+  //    }
 
-//  @Bean
-//  public AuthenticationProvider authenticationProvider() {
-//    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-//    authenticationProvider.setUserDetailsService(service);
-//    authenticationProvider.setPasswordEncoder(passwordEncoder);
-//    return authenticationProvider;
-//  }
+  //  @Bean
+  //  public CustomAuthenticationFilter customAuthenticationFilter() {
+  //    // 이 경로로 들어오는 요청을 잡아서 Authentication 처리를 하겠다
+  //    CustomAuthenticationFilter filter = new CustomAuthenticationFilter("/auth/login");
+  //    filter.setAuthenticationManager(manager());
+  //    filter.setAuthenticationSuccessHandler(new CustomAuthSuccessHandler());
+  //    filter.setAuthenticationFailureHandler(new CustomAuthFailureHandler());
+  //    return filter;
+  //  }
 
-
-  @Bean
-  public CustomAuthenticationFilter customAuthenticationFilter() {
-    // 이 경로로 들어오는 요청을 잡아서 Authentication 처리를 하겠다
-    CustomAuthenticationFilter filter = new CustomAuthenticationFilter("/auth/login");
-    filter.setAuthenticationManager(manager);
-    filter.setAuthenticationSuccessHandler(new CustomAuthSuccessHandler());
-    filter.setAuthenticationFailureHandler(new CustomAuthFailureHandler());
-    return filter;
-  }
+  //  @Bean
+  //  public CustomAuthManager manager() {
+  //    return new CustomAuthManager(service);
+  //  }
 
   @Bean
   public CorsConfigurationSource configurationSource() {

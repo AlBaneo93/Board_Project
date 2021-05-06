@@ -1,10 +1,10 @@
 package edu.example.board_user.Auth;
 
-import edu.example.board_user.Exception.CustomAuthenticationException;
 import edu.example.board_user.Web.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 /*
  * 커스텀 설정을 이용하려 로그인 처리를 진행하기 위함
  * */
-@Slf4j
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class CustomAuthManager implements AuthenticationManager {
 
@@ -28,7 +28,7 @@ public class CustomAuthManager implements AuthenticationManager {
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-    //    log.info("------------------ AuthManager Called -------------------");
+    log.info("------------------ AuthManager Called -------------------");
     log.info("auth principal: " + authentication.getPrincipal());
     UserDetails userDetails = service.loadUserByUsername((String) authentication.getPrincipal());
 
@@ -40,18 +40,15 @@ public class CustomAuthManager implements AuthenticationManager {
 
     // 존재 회원 확인
     if (userDetails == null) {
-      log.error("User Not found Exception");
-      throw new UsernameNotFoundException(authentication.getName() + "Not Found Exception");
-    } else if (!passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword())) { // passwordEncoder의 useMatches를 써야 같은지 판단이 가능하다
-      log.info(userDetails.getPassword());
-      //      log.info("before: " + authentication.getCredentials().toString());
-      //      log.info("after: " + passwordEncoder.encode(authentication.getCredentials().toString()));
-      //      log.info("use Matches: " + passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword()));
-      // 비번 일치 확인
-      log.error("Authentication Exception: Not Mathcing the password");
-      throw new CustomAuthenticationException("Not matches password");
+      log.error("User Not found Exception --- auth manager");
+      throw new UsernameNotFoundException(authentication.getName());
     }
 
+    // 비번 일치 확인
+    if (!passwordEncoder.matches(userDetails.getPassword(), authentication.getCredentials().toString())) {
+      log.error("Authentication Exception: Not Mathcing the password");
+      throw new BadCredentialsException(authentication.getName());
+    }
 
     return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
   }
