@@ -1,8 +1,12 @@
 package edu.example.board_user.Config;
 
+import edu.example.board_user.Auth.CustomAuthFailureHandler;
 import edu.example.board_user.Auth.CustomAuthManager;
+import edu.example.board_user.Auth.CustomAuthSuccessHandler;
+import edu.example.board_user.Auth.CustomAuthenticationFilter;
 import edu.example.board_user.Web.Service.MemberService;
 import edu.example.board_user.Web.VO.Authority;
+import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +18,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -28,13 +33,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final MemberService service;
 
+  private final CustomAuthManager manager;
+
+  private CustomAuthenticationFilter authenticationFilter;
+
   //  private final RestAuthEntiryPoint restAuthEntiryPoint;
 
   //  private final AuthenticationProvider myCustomProvider;
 
-  //  private final CustomAuthFailureHandler failureHandler;
-  //
-  //  private final CustomAuthSuccessHandler successHandler;
+  private final CustomAuthFailureHandler failureHandler;
+
+  private final CustomAuthSuccessHandler successHandler;
+
+  @PostConstruct
+  public void configMemberParameter() {
+    authenticationFilter = new CustomAuthenticationFilter("/auth/login");
+    authenticationFilter.setAuthenticationManager(manager);
+//    authenticationFilter.setFilterProcessesUrl("/auth/login");
+    authenticationFilter.setAuthenticationSuccessHandler(successHandler);
+    authenticationFilter.setAuthenticationFailureHandler(failureHandler);
+  }
 
   @Override
   public void configure(WebSecurity web) throws Exception {
@@ -77,13 +95,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //          .httpBasic()
         .and()
           .csrf().disable()
-          .cors().configurationSource(configurationSource());
-//        .and()
+          .cors().configurationSource(configurationSource())
+        .and()
 //        // UsernamePasswordAuthenticationFilter앞에 customAuthenticationFilter를 추가한다
-//        .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
     // @formatter:on
-  }
 
+  }
 
   //    @Bean
   //    public AuthenticationProvider authenticationProvider() {
@@ -92,7 +110,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   //      authenticationProvider.setPasswordEncoder(passwordEncoder);
   //      return authenticationProvider;
   //    }
-
 
 //  @Bean
 //  public CustomAuthenticationFilter customAuthenticationFilter() {
@@ -104,10 +121,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    return filter;
 //  }
 
-  @Bean
-  public CustomAuthManager manager() {
-    return new CustomAuthManager(service);
-  }
+//  @Bean
+//  public CustomAuthManager manager() {
+//    return new CustomAuthManager(service);
+//  }
 
   @Bean
   public CorsConfigurationSource configurationSource() {

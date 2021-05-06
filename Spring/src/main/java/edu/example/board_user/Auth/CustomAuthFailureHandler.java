@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
+@Component
 public class CustomAuthFailureHandler implements AuthenticationFailureHandler {
 
   @Override
