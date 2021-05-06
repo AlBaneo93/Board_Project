@@ -1,6 +1,5 @@
 package edu.example.board_user.Web.VO;
 
-import java.util.Calendar;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,10 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -46,13 +42,14 @@ public class Member implements UserDetails, Serializable {
   @Column(name = "address")
   private Address address;
 
-  @ElementCollection(fetch = FetchType.LAZY, targetClass = Authority.class)
+  @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+  @Enumerated(EnumType.STRING)
   @Column(name = "role")
-  private Set<Authority> authorities = new HashSet<>();
+  private Set<Role> roles = new HashSet<>();
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return authorities.stream().map(authority -> new SimpleGrantedAuthority(authority.name())).collect(Collectors.toList());
+    return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());
   }
 
   @Override
@@ -86,7 +83,8 @@ public class Member implements UserDetails, Serializable {
   }
 
   @PrePersist
-  public void setCreateAt(){
+  public void setCreateAt() {
     this.createdAt = Calendar.getInstance().getTime();
   }
+
 }

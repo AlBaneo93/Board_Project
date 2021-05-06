@@ -3,7 +3,7 @@ package edu.example.board_user.Web.Service;
 import edu.example.board_user.Exception.PostNotFoundException;
 import edu.example.board_user.Web.Repostiory.PostRepository;
 import edu.example.board_user.Web.VO.Post;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 @Service
 @Transactional
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
 
-  private PostRepository repository;
+  private final PostRepository repository;
 
   @Override
   public Post create(Post post) {

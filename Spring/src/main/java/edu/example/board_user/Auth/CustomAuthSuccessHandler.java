@@ -18,7 +18,8 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
     log.info("Auth Success");
     PrintWriter writer = response.getWriter();
 
-    writer.print(999);
+    // 텍스트로 전달됨
+    writer.println(999);
     writer.println("Authetication Success in Custom");
   }
 

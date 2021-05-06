@@ -1,5 +1,5 @@
 package edu.example.board_user.Web.VO;
 
-public enum Authority {
+public enum Role {
   USER, MANAGER, ADMIN
 }

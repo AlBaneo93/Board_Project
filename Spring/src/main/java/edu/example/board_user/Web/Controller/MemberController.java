@@ -50,7 +50,7 @@ public class MemberController {
     return ResponseEntity.ok(map);
   }
 
-  @PostMapping("/signin")
+  @PostMapping
   public ResponseEntity<Map<String, Object>> signUp(@RequestBody Member member) {
 
     Map<String, Object> map = new HashMap<>();
