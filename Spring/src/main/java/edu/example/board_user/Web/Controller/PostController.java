@@ -2,12 +2,19 @@ package edu.example.board_user.Web.Controller;
 
 import edu.example.board_user.Web.Service.PostService;
 import edu.example.board_user.Web.VO.Post;
-import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
@@ -41,7 +48,7 @@ public class PostController {
   }
 
   @PostMapping
-  public ResponseEntity<Map<String, Object>> save(Post post) {
+  public ResponseEntity<Map<String, Object>> save(@Valid @RequestBody Post post) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.create(post));
@@ -53,7 +60,7 @@ public class PostController {
   }
 
   @DeleteMapping
-  public ResponseEntity<Map<String, Object>> remove(Post post) {
+  public ResponseEntity<Map<String, Object>> remove(@Valid @RequestBody Post post) {
     Map<String, Object> map = new HashMap<>();
     try {
       service.remove(post);
@@ -65,7 +72,7 @@ public class PostController {
   }
 
   @PutMapping
-  public ResponseEntity<Map<String, Object>> update(Post post) {
+  public ResponseEntity<Map<String, Object>> update(@Valid @RequestBody Post post) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.update(post));

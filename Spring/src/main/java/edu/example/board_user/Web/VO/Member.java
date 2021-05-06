@@ -1,6 +1,7 @@
 package edu.example.board_user.Web.VO;
 
 import java.util.Calendar;
+import javax.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,8 +29,10 @@ public class Member implements UserDetails, Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotBlank
   private String email;
 
+  @NotBlank
   private String password;
 
   private Boolean enabled;
@@ -46,6 +49,7 @@ public class Member implements UserDetails, Serializable {
   @Column(name = "address")
   private Address address;
 
+  @NotBlank
   @ElementCollection(fetch = FetchType.LAZY, targetClass = Authority.class)
   @Column(name = "role")
   private Set<Authority> authorities = new HashSet<>();
