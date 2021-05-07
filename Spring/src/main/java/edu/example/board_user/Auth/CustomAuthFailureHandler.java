@@ -17,13 +17,11 @@ public class CustomAuthFailureHandler implements AuthenticationFailureHandler {
 
   @Override
   public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-    log.info("Auth Failure - ");
-//    log.info(exception.getMessage());
-//    log.info("----------------------------------------");
+    log.info("Auth Failure");
 
     PrintWriter writer = response.getWriter();
     writer.println("Authentication Failed");
-    response.sendError(-999, "Authentication Failed in custom");
+    response.sendError(-999, "Authentication Failed");
   }
 
 }

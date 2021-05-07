@@ -4,6 +4,8 @@ import edu.example.board_user.Exception.CommentNotFoundException;
 import edu.example.board_user.Web.Repostiory.CommentRepository;
 import edu.example.board_user.Web.VO.Comment;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,11 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public void remove(Comment comment) {
     repository.delete(comment);
+  }
+
+  @Override
+  public List<Comment> pageComment(int page, int size) {
+    return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending())).getContent();
   }
 
 }

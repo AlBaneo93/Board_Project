@@ -2,20 +2,18 @@ package edu.example.board_user.Web.Controller;
 
 import edu.example.board_user.Web.Service.PostService;
 import edu.example.board_user.Web.VO.Post;
-import java.util.HashMap;
-import java.util.Map;
-import javax.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/posts")
@@ -24,7 +22,7 @@ public class PostController {
   private PostService service;
 
   @GetMapping("/{id}")
-  public ResponseEntity<Map<String, Object>> find(@RequestParam long id) {
+  public ResponseEntity<Map<String, Object>> find(@PathVariable long id) {
     Map<String, Object> map = new HashMap<>();
     try {
       map.put("result", service.find(Post.builder().id(id).build()));
@@ -80,6 +78,20 @@ public class PostController {
     } catch (Exception e) {
       map.put("msg", "Error Occurred");
     }
+    return ResponseEntity.ok(map);
+  }
+
+  @GetMapping("/page/{page}")
+  public ResponseEntity<?> pagePost(@PathVariable("page") int page, @Value("${etc.board.size}") int size) {
+    Map<String, Object> map = new HashMap<>();
+    List<Post> aa = service.pagePost(page, size);
+    log.info("----");
+    System.out.println(aa.get(0).getComments().size());
+    System.out.println(aa.get(0).getComments().get(0).toString());
+    log.info("----");
+    map.put("ret", aa);
+    map.put("size", size);
+    map.put("msg", "success");
     return ResponseEntity.ok(map);
   }
 

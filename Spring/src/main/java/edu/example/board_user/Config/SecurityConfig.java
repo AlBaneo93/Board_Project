@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
         .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // preflight permitted
-            .antMatchers("/","/success","/denied","/auth/login").permitAll()
+            .antMatchers("/","/success","/denied","/auth/login", "/api/posts/**","/api/comments/**").permitAll()
             .antMatchers("/api/index/hello").permitAll()
             .antMatchers("/api/index/admin").hasAuthority(Role.ADMIN.name())
             .antMatchers("/api/index/user").hasAnyAuthority(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())

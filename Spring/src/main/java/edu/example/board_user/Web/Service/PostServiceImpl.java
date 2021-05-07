@@ -4,6 +4,8 @@ import edu.example.board_user.Exception.PostNotFoundException;
 import edu.example.board_user.Web.Repostiory.PostRepository;
 import edu.example.board_user.Web.VO.Post;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,12 @@ public class PostServiceImpl implements PostService {
   @Override
   public void remove(Post post) {
     repository.delete(post);
+  }
+
+  @Override
+  public List<Post> pagePost(int page, int size) {
+    // page당 size크기만큼 뽑게 되는데, 몇번 째 page를 받을 지 전달받음
+    return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending())).getContent();
   }
 
 }
