@@ -1,28 +1,55 @@
 package edu.example.board_user.Config;
 
+import edu.example.board_user.Auth.CustomAuthFailureHandler;
+import edu.example.board_user.Auth.CustomAuthManager;
+import edu.example.board_user.Auth.CustomAuthSuccessHandler;
+import edu.example.board_user.Auth.CustomAuthenticationFilter;
 import edu.example.board_user.Web.Service.MemberService;
 import edu.example.board_user.Web.VO.Role;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.annotation.PostConstruct;
 
 @Slf4j
 @EnableWebSecurity
 @Configuration
-@AllArgsConstructor
-//@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private MemberService service;
+  private final PasswordEncoder passwordEncoder;
+
+  private final MemberService service;
+
+  private final CustomAuthManager manager;
+
+  private final CustomAuthFailureHandler failureHandler;
+
+  private final CustomAuthSuccessHandler successHandler;
+
+  private CustomAuthenticationFilter authenticationFilter;
+
+  @PostConstruct
+  public void configMemberParameter() {
+    authenticationFilter = new CustomAuthenticationFilter("/auth/login");
+    authenticationFilter.setAuthenticationManager(manager);
+    //    authenticationFilter.setFilterProcessesUrl("/auth/login");
+    authenticationFilter.setAuthenticationSuccessHandler(successHandler);
+    authenticationFilter.setAuthenticationFailureHandler(failureHandler);
+  }
 
   @Override
   public void configure(WebSecurity web) throws Exception {
@@ -31,61 +58,80 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    log.info("auth configure access");
-    auth.userDetailsService(service).passwordEncoder(passwordEncoder());
+    //          Auth provider를 따로 설정하면 이곳에~
+    auth.userDetailsService(service).passwordEncoder(passwordEncoder);
+    //      auth.authenticationProvider(myCustomProvider);
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    //    http.logout().invalidateHttpSession(true).deleteCookies("JSESSIONID").and()
-    //        .formLogin().loginPage("/login").usernameParameter("email").passwordParameter("pass").permitAll().and()
-    //        .cors().disable()
-    //        .csrf().disable()
-    //        .httpBasic().disable();
 
-    //    세션 설정, 세션 생성 정책은 stateless로
-    //    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-    //    http.authorizeRequests()
-    //        .antMatchers("/api/**", "/actuator/**", "/web-resources/**").permitAll();
-
-    http.authorizeRequests()
-        .antMatchers("/login", "/hello", "/home", "/api/member").permitAll()
-        .antMatchers("/api/index/admin").hasRole(Role.ADMIN.name())
-        .antMatchers("/api/index/user").hasRole(Role.USER.name())
-        .antMatchers("/api/index/manager").hasRole(Role.MANAGER.name())
-        .antMatchers("/api/admin/**").hasRole(Role.ADMIN.name())
-        .anyRequest().authenticated()
+    // @formatter:off
+    http
+        .authorizeRequests()
+            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // preflight permitted
+            .antMatchers("/","/success","/denied","/auth/login", "/api/posts/**","/api/comments/**").permitAll()
+            .antMatchers("/api/index/hello").permitAll()
+            .antMatchers("/api/index/admin").hasAuthority(Role.ADMIN.name())
+            .antMatchers("/api/index/user").hasAnyAuthority(Role.USER.name(), Role.MANAGER.name(), Role.ADMIN.name())
+            .anyRequest().authenticated()
+//        .and()
+//          .exceptionHandling()
+//          .authenticationEntryPoint(restAuthEntiryPoint)
+//        .and()
+          // 하단 커스텀 필터를 따름
+//          .formLogin()
+//            .loginProcessingUrl("/auth/login")
+//            .successHandler(successHandler)
+//            .failureHandler(failureHandler)
+//            .permitAll()
         .and()
-        .formLogin()
-        .loginPage("/login")
-        .usernameParameter("email")
-        .passwordParameter("password")
-        .defaultSuccessUrl("/");
-
-    //    http
-    //        .antMatcher("/api/member/**")
-    //        .authorizeRequests()
-    //        .antMatchers("/api/member/admin").hasRole(Role.ADMIN.name())
-    //        .antMatchers(HttpMethod.POST).permitAll() // 모든 접근 허용
-    //        //        .anyRequest().hasRole(Role.USER.name())
-    //        // 가입외 모든 경로는 해당 권한중 하나만 접근 가능
-    //        //        .anyRequest().hasAnyRole(Role.USER.name(), Role.ADMIN.name(), Role.MANAGER.name());
-    //        .anyRequest().permitAll();
+          .logout()
+            .permitAll().invalidateHttpSession(true)
+//        .and()
+//          .httpBasic()
+        .and()
+          .csrf().disable()
+          .cors().configurationSource(configurationSource())
+        .and()
+//        // UsernamePasswordAuthenticationFilter앞에 customAuthenticationFilter를 추가한다
+        .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    // @formatter:on
 
   }
 
-  @Bean
-  public DaoAuthenticationProvider customAuthenticationProvider() {
-    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-    authenticationProvider.setPasswordEncoder(passwordEncoder());
-    authenticationProvider.setUserDetailsService(service);
-    return authenticationProvider;
-  }
+  //    @Bean
+  //    public AuthenticationProvider authenticationProvider() {
+  //      DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+  //      authenticationProvider.setUserDetailsService(service);
+  //      authenticationProvider.setPasswordEncoder(passwordEncoder);
+  //      return authenticationProvider;
+  //    }
+
+  //  @Bean
+  //  public CustomAuthenticationFilter customAuthenticationFilter() {
+  //    // 이 경로로 들어오는 요청을 잡아서 Authentication 처리를 하겠다
+  //    CustomAuthenticationFilter filter = new CustomAuthenticationFilter("/auth/login");
+  //    filter.setAuthenticationManager(manager());
+  //    filter.setAuthenticationSuccessHandler(new CustomAuthSuccessHandler());
+  //    filter.setAuthenticationFailureHandler(new CustomAuthFailureHandler());
+  //    return filter;
+  //  }
+
+  //  @Bean
+  //  public CustomAuthManager manager() {
+  //    return new CustomAuthManager(service);
+  //  }
 
   @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+  public CorsConfigurationSource configurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+    configuration.addAllowedMethod("*");
+    configuration.addAllowedOrigin("*");
+    configuration.addAllowedHeader("*");
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
   }
 
 }

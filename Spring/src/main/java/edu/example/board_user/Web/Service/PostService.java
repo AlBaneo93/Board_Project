@@ -17,4 +17,6 @@ public interface PostService {
 
   void remove(Post post);
 
+  List<Post> pagePost(int page, int size);
+
 }

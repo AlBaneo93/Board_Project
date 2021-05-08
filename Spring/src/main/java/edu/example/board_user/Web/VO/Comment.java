@@ -1,9 +1,7 @@
 package edu.example.board_user.Web.VO;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
+@ToString(exclude = "post")
 public class Comment {
 
   @Id
@@ -20,18 +19,20 @@ public class Comment {
 
   private String content;
 
+  // TODO: 2021-05-08  
+  @JsonIgnore
   @ManyToOne
   private Post post;
 
 
-  public void addPost(Post post) {
-    this.post = post;
-    post.getComments().add(this);
-  }
-
-  public void removePost(Post post) {
-    this.post = null;
-    post.getComments().remove(this);
-  }
+  //  public void addPost(Post post) {
+  //    this.post = post;
+  //    post.getComments().add(this);
+  //  }
+  //
+  //  public void removePost(Post post) {
+  //    this.post = null;
+  //    post.getComments().remove(this);
+  //  }
 
 }

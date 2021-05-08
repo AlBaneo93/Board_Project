@@ -3,7 +3,7 @@ package edu.example.board_user.Web.Service;
 import edu.example.board_user.Exception.UserNotFoundException;
 import edu.example.board_user.Web.Repostiory.MemberRepository;
 import edu.example.board_user.Web.VO.Member;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,14 +14,14 @@ import java.util.List;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
-  private MemberRepository repository;
+  private final MemberRepository repository;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    log.info("User Access at loadUserByUsername : " + username);
+//    log.info("User Access at loadUserByUsername : " + username);
     return repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException(username));
   }
 

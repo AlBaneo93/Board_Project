@@ -6,34 +6,46 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 @Entity
-public class Post {
+public class Post implements Serializable {
+
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotBlank
   private String title;
 
+  @NotBlank
   private String content;
 
-  @OneToMany(mappedBy = "post")
-  private Set<Comment> comments;
+  @JoinColumn(name = "post_id")
+  //  @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, targetEntity = Comment.class)
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Comment.class)
+  private List<Comment> comments = new ArrayList<>();
 
-  public void addPost(Comment comment) {
-    this.comments.add(comment);
-    comment.setPost(this);
+
+  public void addComment(Comment comment) {
+    if (comments == null)
+      comments = new ArrayList<>();
+    comments.add(comment);
+    //    comment.setPost(this);
   }
 
-  public void removePost(Comment comment) {
+
+  public void removeComment(Comment comment) {
     this.comments.remove(comment);
-    comment.setPost(null);
+    //    comment.setPost(null);
   }
 
 }

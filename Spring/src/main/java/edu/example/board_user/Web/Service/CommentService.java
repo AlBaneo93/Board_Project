@@ -16,4 +16,6 @@ public interface CommentService {
 
   void remove(Comment comment);
 
+  List<Comment> pageComment(int page, int size);
+
 }

@@ -3,18 +3,20 @@ package edu.example.board_user.Web.Service;
 import edu.example.board_user.Exception.CommentNotFoundException;
 import edu.example.board_user.Web.Repostiory.CommentRepository;
 import edu.example.board_user.Web.VO.Comment;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class CommentServiceImpl implements CommentService {
 
-  private CommentRepository repository;
+  private final CommentRepository repository;
 
   @Override
   public Comment create(Comment comment) {
@@ -39,6 +41,11 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public void remove(Comment comment) {
     repository.delete(comment);
+  }
+
+  @Override
+  public List<Comment> pageComment(int page, int size) {
+    return repository.findAll(PageRequest.of(page, size, Sort.by("id").descending())).getContent();
   }
 
 }
