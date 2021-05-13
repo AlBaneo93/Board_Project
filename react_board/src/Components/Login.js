@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import http from "../utils/Http";
+import http from "../utils/http";
 import {useHistory} from "react-router-dom";
 
 const Login = () => {
