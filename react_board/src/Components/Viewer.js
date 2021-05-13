@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link, Route} from "react-router-dom";
 import Home from "./Home";
+import NaverCallback from "./NaverCallback";
 import SignIn from "./SignIn";
 import Login from "./Login";
 import UserInfo from "./UserInfo";
@@ -12,6 +13,7 @@ const Viewer = () => {
             <Route exact path="/signin" component={SignIn}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/info" component={UserInfo}/>
+            <Route exact path="/naver/callback" component={NaverCallback}/>
         </div>
     )
 }
