@@ -7,14 +7,11 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import edu.example.board_user.Web.VO.Member;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@RequiredArgsConstructor
-@Component
 public class JwtManager {
 
   private final long expires = 10 * 60 * 1000;
