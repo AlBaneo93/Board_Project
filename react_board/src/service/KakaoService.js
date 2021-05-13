@@ -1,4 +1,4 @@
-import http from "../utils/Http";
+import http from "../utils/http";
 
 const {Kakao} = window
 
@@ -22,7 +22,7 @@ class KakaoService {
         Kakao.Auth.login({
             success: (authObj) => {
                 console.log(authObj)
-                http.post('http://localhost:8080/callback', JSON.stringify(authObj))
+                http.post('http://localhost:8080/callback', authObj)
             },
             fail: err => {
                 alert(JSON.stringify(err))

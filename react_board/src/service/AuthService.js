@@ -1,4 +1,4 @@
-import http from "../utils/Http";
+import http from "../utils/http";
 
 class AuthService {
     excuteAuthentication(username, password) {
