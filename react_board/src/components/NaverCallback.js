@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {useHistory} from "react-router-dom";
-import http from "../Utils/http";
+import http from "../utils/http";
 
 const NaverCallback = () => {
     const history = useHistory()
@@ -27,7 +27,7 @@ const NaverCallback = () => {
 
     return (
         <div>
-            {'콜백 처리중'}
+            Loading...
         </div>
     )
 }

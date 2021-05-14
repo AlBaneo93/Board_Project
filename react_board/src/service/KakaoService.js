@@ -1,4 +1,4 @@
-import http from "../Utils/http";
+import http from "../utils/http";
 
 const {Kakao} = window
 
