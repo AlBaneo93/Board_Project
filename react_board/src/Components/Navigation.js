@@ -1,19 +1,20 @@
-import React, {useState} from 'react'
-import {Link, Route} from 'react-router-dom'
-import Login from "./Login";
-import SignIn from "./SignIn";
-import Home from "./Home";
+import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navigation = () => {
 
-    const [user, setUser] = useState({"email": "need initial", "address": {}})
 
     return (
         <div>
             <Link to="/">Home</Link>
+            <br/>
             <Link to="/signin">SignIn</Link>
+            <br/>
             <Link to="/login">LogIn</Link>
-            <Link to="/info">{user.email !== null ? user.email : "need init user Object"}</Link>
+            <br/>
+            <Link to="/info">Info</Link>
+            <br/>
+            <Link to="/social">Social Login</Link>
 
         </div>
     )

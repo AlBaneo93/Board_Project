@@ -1,5 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react'
-
+import React, {useState} from 'react'
 
 
 const UserInfo = () => {
