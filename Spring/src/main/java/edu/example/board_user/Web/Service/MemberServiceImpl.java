@@ -5,6 +5,7 @@ import edu.example.board_user.Web.Repostiory.MemberRepository;
 import edu.example.board_user.Web.VO.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,7 @@ public class MemberServiceImpl implements MemberService {
 
   @Override
   @Transactional
+  @Cacheable
   public List<Member> findAll() {
     return repository.findAll();
   }

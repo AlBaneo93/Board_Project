@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import http from '../utils/Http'
+import React, {useState} from 'react'
 import {useHistory} from "react-router-dom";
+import http from '../utils/http'
 
 const SignIn = () => {
 

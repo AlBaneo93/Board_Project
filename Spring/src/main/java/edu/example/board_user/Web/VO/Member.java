@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
 @Entity
 public class Member implements UserDetails, Serializable {
 
-  private static final long serialVersionUID = -4855890427225819382L;
+
+  private static final long serialVersionUID = 8876414256896734500L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,6 +4,8 @@ import edu.example.board_user.Exception.PostNotFoundException;
 import edu.example.board_user.Web.Repostiory.PostRepository;
 import edu.example.board_user.Web.VO.Post;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import http from "../utils/Http";
 import {useHistory} from "react-router-dom";
+import http from "../utils/http";
 
-const Login = () => {
+const CustomLogin = () => {
 
     const history = useHistory();
     const [member, setMember] = useState({"username": "", "password": ""})
@@ -54,4 +54,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default CustomLogin

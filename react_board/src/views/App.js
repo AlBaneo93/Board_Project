@@ -1,14 +1,19 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Navigation from "../components/Navigation";
 import Viewer from "../components/Viewer";
 
-const Main = () => {
+
+const App = () => {
+
+
     return (
         <div>
+
             <Navigation/>
             <Viewer/>
+
         </div>
     )
 }
 
-export default Main
+export default App
