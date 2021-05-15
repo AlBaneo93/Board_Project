@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 /*
  * 커스텀 설정을 이용하려 로그인 처리를 진행하기 위함
  * */
-@Component
 @Slf4j
+@Component
 @RequiredArgsConstructor
 public class CustomAuthManager implements AuthenticationManager {
 
