@@ -25,7 +25,6 @@ public class PostServiceImpl implements PostService {
     return repository.save(post);
   }
 
-  @Cacheable
   @Override
   public List<Post> findAll() {
     return repository.findAll();
@@ -36,19 +35,16 @@ public class PostServiceImpl implements PostService {
     return repository.findById(post.getId()).orElseThrow(() -> new PostNotFoundException(""));
   }
 
-  @CacheEvict
   @Override
   public Post update(Post post) {
     return repository.save(post);
   }
 
-  @CacheEvict
   @Override
   public void remove(Post post) {
     repository.delete(post);
   }
 
-  @Cacheable
   @Override
   public List<Post> pagePost(int page, int size) {
     // page당 size크기만큼 뽑게 되는데, 몇번 째 page를 받을 지 전달받음

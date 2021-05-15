@@ -5,18 +5,20 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+@Builder
 @ToString
 @Getter
-@Builder
 @RequiredArgsConstructor
-public class NaverTokenDTO {
+public class IntegratedUser {
 
-  private final String access_token;
+  private final String email;
 
-  private final Long expires_in;
+  private final String password;
 
-  private final String state;
+  private final String name;
 
-  private final String token_type;
+  private final String imgurl;
+
+  private final String nickname;
 
 }

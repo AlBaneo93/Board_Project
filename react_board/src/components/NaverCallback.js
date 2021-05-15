@@ -14,10 +14,10 @@ const NaverCallback = () => {
         })
 
         http.post('/oauth/naver', item)
-            .then(data => console.log)
+            .then(data => alert(JSON.stringify(data)))
             .catch(err => console.log)
             .finally(() => {
-                history.push("/")
+                history.replace("/")
             })
     }
 
@@ -27,7 +27,7 @@ const NaverCallback = () => {
 
     return (
         <div>
-            Loading...
+            Processing...
         </div>
     )
 }

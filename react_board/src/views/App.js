@@ -8,8 +8,10 @@ const App = () => {
 
     return (
         <div>
+
             <Navigation/>
             <Viewer/>
+
         </div>
     )
 }

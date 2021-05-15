@@ -10,15 +10,17 @@ class KakaoService {
     }
 
     login() {
-        Kakao.Auth.login({
+        return Kakao.Auth.login({
             success: (authObj) => {
                 console.log(authObj)
-                http.post('http://localhost:8080/callback', authObj)
+                return authObj;
             },
             fail: err => {
                 alert(JSON.stringify(err))
+                return null;
             }
         })
+
     }
 }
 
