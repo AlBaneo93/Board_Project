@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 
 const NaverLogin = () => {
 
@@ -32,7 +32,7 @@ const NaverLogin = () => {
                 if (status) {
                     console.log("Naver logged in", naverLogin.user)
                     const {id, email, gender} = naverLogin.user
-                }else{
+                } else {
                     console.log('naver logged out')
                 }
             })

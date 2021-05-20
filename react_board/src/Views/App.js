@@ -1,6 +1,6 @@
 import React from 'react'
-import Navigation from "../components/Navigation";
-import Viewer from "../components/Viewer";
+import Navigation from "../Components/Navigation";
+import Viewer from "../Components/Viewer";
 
 
 const App = () => {

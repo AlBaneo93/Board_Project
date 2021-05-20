@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useHistory} from "react-router-dom";
-import http from "../utils/http";
+import http from "../Utils/http";
 
 const CustomLogin = () => {
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useHistory} from "react-router-dom";
-import http from "../../utils/http";
+import http from "../../Utils/http";
 
 const List = () => {
     const [boards, setBoards] = useState([])
@@ -33,9 +33,9 @@ const List = () => {
             {
                 // TODO : link로 바꾸면 좋지 않을까?
                 boards.map((board, index) => {
-                        return <Link to={} onClick={(e) => {
+                        return <div onClick={(e) => {
                             goBoardDetail(board, e)
-                        }} key={index}>{board.title}</Link>
+                        }} key={index}>{board.title}</div>
                     }
                 )
             }

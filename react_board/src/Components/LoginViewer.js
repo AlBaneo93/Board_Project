@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {useHistory} from "react-router-dom";
-import KakaoService from "../service/KakaoService";
-import http from '../utils/http'
+import http from '../Utils/http'
 
 const LoginViewer = () => {
     const naver_client_id = 'nrcctKic2og07bgqX85X';
@@ -121,7 +120,7 @@ const LoginViewer = () => {
         document.head.appendChild(kakaoSdk);
 
         kakaoSdk.onload = () => {
-            window.Kakao.init("09bca32d090ac2266c9f3c688908be8e");
+            window.Kakao.init(process.env.REACT_APP_KAKAO_SECRET);
             window.Kakao.Auth.createLoginButton({
                 container: '#kakao-login-btn',
                 success: auth => {

@@ -1,5 +1,3 @@
-import http from "../utils/http";
-
 const {Kakao} = window
 
 class KakaoService {

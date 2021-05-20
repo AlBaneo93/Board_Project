@@ -6,7 +6,7 @@ const UserInfo = () => {
     const [user, setUser] = useState({})
 
 
-    return(
+    return (
         <div>
 
         </div>
