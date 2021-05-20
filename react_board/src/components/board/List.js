@@ -33,9 +33,9 @@ const List = () => {
             {
                 // TODO : link로 바꾸면 좋지 않을까?
                 boards.map((board, index) => {
-                        return <span onClick={(e) => {
+                        return <Link to={} onClick={(e) => {
                             goBoardDetail(board, e)
-                        }} key={index}>{board.title}</span>
+                        }} key={index}>{board.title}</Link>
                     }
                 )
             }
